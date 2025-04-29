@@ -256,12 +256,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
           user = await storage.getUser(activity.userId);
         }
         
+        // Handle milestone type activities with appropriate details
+        let milestone: number | undefined = undefined;
+        if (activity.type === 'milestone' && activity.details) {
+          const details = activity.details as { milestone?: number, message?: string };
+          milestone = details.milestone;
+        }
+        
         return {
           id: activity.id,
           type: activity.type,
           user: user?.fullName || undefined,
           amount: activity.amount,
-          milestone: activity.type === 'milestone' ? activity.details?.milestone : undefined,
+          milestone: milestone,
           timeAgo: formatTimeAgo(new Date(activity.createdAt))
         };
       }));
@@ -363,6 +370,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const updatedCircle = await storage.updateMoneyCircle(circleId, {
         currentAmount: circle.currentAmount + amount
       });
+      
+      if (!updatedCircle) {
+        return res.status(500).json({ message: 'Failed to update circle amount' });
+      }
       
       // Record activity
       await storage.createCircleActivity({

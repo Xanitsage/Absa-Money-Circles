@@ -5,8 +5,21 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import ProgressCircle from "@/components/ui/progress-circle";
 import { UserWallet, SavingsGoal, MoneyCircle } from "@shared/schema";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle,
+  DialogDescription,
+  DialogFooter 
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function Home() {
+  const [showAddMoneyModal, setShowAddMoneyModal] = useState(false);
+  const [showCardsModal, setShowCardsModal] = useState(false);
+
   const { data: wallet, isLoading: isLoadingWallet } = useQuery<UserWallet>({
     queryKey: ['/api/wallet']
   });
@@ -42,14 +55,20 @@ export default function Home() {
           {isLoadingWallet ? "Loading..." : formatCurrency(wallet?.balance || 0)}
         </h2>
         <div className="flex space-x-2">
-          <button className="bg-white bg-opacity-20 rounded-full py-2 px-4 text-sm font-medium flex items-center">
+          <button 
+            className="bg-white bg-opacity-20 rounded-full py-2 px-4 text-sm font-medium flex items-center"
+            onClick={() => setShowAddMoneyModal(true)}
+          >
             <svg className="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 5v14"/>
               <path d="M5 12h14"/>
             </svg>
             Add Money
           </button>
-          <button className="bg-white bg-opacity-20 rounded-full py-2 px-4 text-sm font-medium flex items-center">
+          <button 
+            className="bg-white bg-opacity-20 rounded-full py-2 px-4 text-sm font-medium flex items-center"
+            onClick={() => setShowCardsModal(true)}
+          >
             <svg className="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect width="20" height="14" x="2" y="5" rx="2"/>
               <line x1="2" x2="22" y1="10" y2="10"/>
@@ -211,20 +230,20 @@ export default function Home() {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="font-medium">{formatCurrency(circle.currentAmount)} saved</span>
-                  <span className="text-gray-500">Goal: {formatCurrency(circle.targetAmount)}</span>
+                  <span className="text-muted-foreground">Goal: {formatCurrency(circle.targetAmount)}</span>
                 </div>
                 <div className="mt-3 flex overflow-hidden">
                   <div className="flex -space-x-2">
                     {circle.members.slice(0, 3).map((member, index) => (
                       <div 
                         key={index}
-                        className="w-6 h-6 bg-primary text-white rounded-full border border-white flex items-center justify-center text-xs font-medium"
+                        className="w-6 h-6 bg-primary text-white rounded-full border border-background flex items-center justify-center text-xs font-medium"
                       >
                         {member.id}
                       </div>
                     ))}
                     {circle.members.length > 3 && (
-                      <div className="w-6 h-6 rounded-full border border-white bg-gray-100 flex items-center justify-center text-xs">
+                      <div className="w-6 h-6 rounded-full border border-background bg-secondary flex items-center justify-center text-xs">
                         +{circle.members.length - 3}
                       </div>
                     )}
@@ -248,6 +267,120 @@ export default function Home() {
           </Card>
         )}
       </div>
+
+      {/* Add Money Modal */}
+      <Dialog open={showAddMoneyModal} onOpenChange={setShowAddMoneyModal}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Add Money to Wallet</DialogTitle>
+            <DialogDescription>
+              Add money to your Absa wallet from your bank account or card.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium">Amount</h4>
+              <Input 
+                type="number" 
+                placeholder="Enter amount" 
+                className="col-span-3"
+                min={10}
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium">Quick amounts</h4>
+              <div className="grid grid-cols-3 gap-2">
+                <Button variant="outline" onClick={() => {}}>R100</Button>
+                <Button variant="outline" onClick={() => {}}>R500</Button>
+                <Button variant="outline" onClick={() => {}}>R1000</Button>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium">Payment method</h4>
+              <div className="grid grid-cols-1 gap-2">
+                <Button variant="outline" className="justify-start" onClick={() => {}}>
+                  <svg className="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect width="20" height="14" x="2" y="5" rx="2"/>
+                    <line x1="2" x2="22" y1="10" y2="10"/>
+                  </svg>
+                  Card ending in 4567
+                </Button>
+                <Button variant="outline" className="justify-start" onClick={() => {}}>
+                  <svg className="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"/>
+                    <path d="M4 11h16"/>
+                  </svg>
+                  Absa Current Account
+                </Button>
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowAddMoneyModal(false)}>Cancel</Button>
+            <Button onClick={() => setShowAddMoneyModal(false)}>Add Money</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Cards Modal */}
+      <Dialog open={showCardsModal} onOpenChange={setShowCardsModal}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Your Cards</DialogTitle>
+            <DialogDescription>
+              Manage your payment cards and accounts.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="bg-primary rounded-lg p-4 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 left-0 h-20 bg-black/10"></div>
+              <div className="relative z-10">
+                <p className="text-sm opacity-80 mb-4">Absa Red Card</p>
+                <p className="text-lg font-mono mb-6">**** **** **** 4567</p>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-xs opacity-70">Valid thru</p>
+                    <p className="font-mono text-sm">09/25</p>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="4"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <Button variant="outline" className="justify-start h-auto py-3" onClick={() => {}}>
+                <div className="flex flex-col items-start">
+                  <span className="text-sm font-medium">View Details</span>
+                  <span className="text-xs text-muted-foreground">Limits, PIN & Security</span>
+                </div>
+              </Button>
+              <Button variant="outline" className="justify-start h-auto py-3" onClick={() => {}}>
+                <div className="flex flex-col items-start">
+                  <span className="text-sm font-medium">Freeze Card</span>
+                  <span className="text-xs text-muted-foreground">Temporarily block</span>
+                </div>
+              </Button>
+              <Button variant="outline" className="justify-start h-auto py-3" onClick={() => {}}>
+                <div className="flex flex-col items-start">
+                  <span className="text-sm font-medium">Virtual Card</span>
+                  <span className="text-xs text-muted-foreground">For online purchases</span>
+                </div>
+              </Button>
+              <Button variant="outline" className="justify-start h-auto py-3" onClick={() => {}}>
+                <div className="flex flex-col items-start">
+                  <span className="text-sm font-medium">Report Lost</span>
+                  <span className="text-xs text-muted-foreground">Block & replace</span>
+                </div>
+              </Button>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowCardsModal(false)}>Close</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

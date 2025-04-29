@@ -49,31 +49,50 @@ export default function Home() {
   return (
     <div className="px-4 pt-6 pb-4">
       {/* Wallet Card */}
-      <div className="bg-primary rounded-xl p-6 text-white mb-6">
-        <p className="text-sm opacity-80 mb-1">My Wallet Balance</p>
+      <div className="bg-primary rounded-xl p-4 text-white mb-6">
+        <div className="flex justify-between items-start mb-1">
+          <p className="text-sm opacity-80">Available Balance</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect width="20" height="14" x="2" y="5" rx="2"/>
+            <line x1="2" x2="22" y1="10" y2="10"/>
+          </svg>
+        </div>
         <h2 className="text-3xl font-bold mb-4">
           {isLoadingWallet ? "Loading..." : formatCurrency(wallet?.balance || 0)}
         </h2>
-        <div className="flex space-x-2">
+        <div className="grid grid-cols-4 gap-2 mt-2 pt-3 border-t border-white/20">
           <button 
-            className="bg-white bg-opacity-20 rounded-full py-2 px-4 text-sm font-medium flex items-center"
+            className="flex flex-col items-center"
             onClick={() => setShowAddMoneyModal(true)}
           >
-            <svg className="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 5v14"/>
-              <path d="M5 12h14"/>
+            <svg className="mb-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 8l-5-5-5 5M12 3v16"/>
             </svg>
-            Add Money
+            <span className="text-xs">Add Money</span>
           </button>
+          <Link href="/pay" className="flex flex-col items-center">
+            <svg className="mb-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+            <span className="text-xs">Transfer</span>
+          </Link>
+          <Link href="/pay" className="flex flex-col items-center">
+            <svg className="mb-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="16"/>
+              <line x1="8" y1="12" x2="16" y2="12"/>
+            </svg>
+            <span className="text-xs">Pay</span>
+          </Link>
           <button 
-            className="bg-white bg-opacity-20 rounded-full py-2 px-4 text-sm font-medium flex items-center"
+            className="flex flex-col items-center"
             onClick={() => setShowCardsModal(true)}
           >
-            <svg className="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="mb-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect width="20" height="14" x="2" y="5" rx="2"/>
               <line x1="2" x2="22" y1="10" y2="10"/>
             </svg>
-            Cards
+            <span className="text-xs">Cards</span>
           </button>
         </div>
       </div>

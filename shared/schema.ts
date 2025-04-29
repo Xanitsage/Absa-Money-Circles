@@ -131,20 +131,21 @@ export const insertMessageSchema = createInsertSchema(messages).pick({
 });
 
 // Types
+// Database entity types
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
 
-export type SavingsGoal = typeof savingsGoals.$inferSelect;
+export type DB_SavingsGoal = typeof savingsGoals.$inferSelect;
 export type InsertSavingsGoal = z.infer<typeof insertSavingsGoalSchema>;
 
-export type MoneyCircle = typeof moneyCircles.$inferSelect;
+export type DB_MoneyCircle = typeof moneyCircles.$inferSelect;
 export type InsertMoneyCircle = z.infer<typeof insertMoneyCircleSchema>;
 export type CreateCircleData = z.infer<typeof createCircleSchema>;
 
-export type CircleMember = typeof circleMembers.$inferSelect;
+export type DB_CircleMember = typeof circleMembers.$inferSelect;
 export type InsertCircleMember = z.infer<typeof insertCircleMemberSchema>;
 
-export type CircleActivity = typeof circleActivities.$inferSelect;
+export type DB_CircleActivity = typeof circleActivities.$inferSelect;
 export type InsertCircleActivity = z.infer<typeof insertCircleActivitySchema>;
 
 export type Message = typeof messages.$inferSelect;
@@ -155,8 +156,10 @@ export interface UserWallet {
   balance: number;
 }
 
+// Define UI interfaces
 export interface SavingsGoal {
   id: number;
+  userId: number;
   name: string;
   targetAmount: number;
   currentAmount: number;
@@ -164,11 +167,12 @@ export interface SavingsGoal {
   status: string;
 }
 
-export interface MoneyCircleMember {
+interface MoneyCircleMember {
   id: number;
   name: string;
 }
 
+// Export the final interface that merges DB and UI fields
 export interface MoneyCircle {
   id: number;
   name: string;
@@ -189,13 +193,24 @@ export interface MoneyCircle {
   pendingContributions: number;
 }
 
-export interface CircleDetails extends MoneyCircle {
+export interface CircleDetails {
+  id: number;
+  name: string;
+  targetAmount: number;
+  currentAmount: number;
+  targetDate: string;
   contributionFrequency: string;
   autoSave: boolean;
   celebrateMilestones: boolean;
+  createdById: number;
   createdBy: string;
   createdAt: string;
   inviteCode: string;
+  memberCount: number;
+  members: MoneyCircleMember[];
+  unreadMessages: number;
+  startedTimeAgo: string;
+  pendingContributions: number;
 }
 
 export interface CircleMember {

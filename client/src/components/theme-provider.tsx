@@ -46,7 +46,10 @@ export function ThemeProvider({
     }
     
     root.classList.add(theme);
-  }, [theme]);
+    
+    // Store the theme preference
+    localStorage.setItem(storageKey, theme);
+  }, [theme, storageKey]);
 
   const value = {
     theme,

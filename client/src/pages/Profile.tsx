@@ -1,361 +1,331 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { User } from "@shared/schema";
+import { Avatar } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
+import { useQuery } from "@tanstack/react-query";
+import { User, UserWallet } from "@shared/schema";
 import { formatCurrency } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 
 export default function Profile() {
-  const [activeTab, setActiveTab] = useState("account");
+  const [darkMode, setDarkMode] = useState(false);
+  const [notifications, setNotifications] = useState(true);
+  const [autoSave, setAutoSave] = useState(false);
+  const [showCardDetails, setShowCardDetails] = useState(false);
   
   // Fetch user data
-  const { data: user, isLoading } = useQuery<User>({
+  const { data: user } = useQuery<User>({
     queryKey: ['/api/user']
   });
 
-  if (isLoading || !user) {
-    return <div className="p-6 text-center">Loading profile...</div>;
-  }
+  // Fetch wallet data
+  const { data: wallet } = useQuery<UserWallet>({
+    queryKey: ['/api/wallet']
+  });
 
   return (
-    <div className="px-4 pt-6 pb-4">
+    <div className="px-4 pt-6 pb-28">
       {/* Profile Header */}
       <div className="flex items-center mb-6">
-        <Avatar className="h-20 w-20 border-2 border-primary">
-          <AvatarImage src={`https://i.pravatar.cc/150?img=1`} alt={user.fullName} />
-          <AvatarFallback className="bg-primary/10 text-primary">
-            {user.fullName.split(' ').map(n => n[0]).join('')}
-          </AvatarFallback>
+        <Avatar className="h-20 w-20 border-4 border-primary">
+          <div className="bg-primary text-white text-xl font-semibold h-full w-full flex items-center justify-center">
+            {user?.fullName?.split(' ').map(n => n[0]).join('')}
+          </div>
         </Avatar>
         <div className="ml-4">
-          <h2 className="text-xl font-bold">{user.fullName}</h2>
-          <p className="text-gray-500">{user.email}</p>
+          <h1 className="text-2xl font-bold">{user?.fullName || "Loading..."}</h1>
+          <p className="text-gray-500">{user?.email || ""}</p>
           <div className="flex items-center mt-1">
-            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full mr-2">
-              Level {user.level}
+            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+              Level {user?.level || 1}
             </span>
-            <span className="text-xs text-gray-500">
-              {user.xpPoints} XP
+            <span className="text-xs ml-2 text-gray-500">
+              {user?.xpPoints || 0} XP
             </span>
           </div>
         </div>
       </div>
-
-      {/* Wallet Overview */}
-      <Card className="p-4 mb-6 bg-primary text-white">
-        <h3 className="text-sm opacity-80 mb-1">My Wallet Balance</h3>
-        <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold">
-            {formatCurrency(user.walletBalance)}
-          </h2>
-          <Button 
-            variant="ghost" 
-            className="bg-white/20 text-white rounded-full text-sm"
-          >
-            <svg className="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="16" y2="12" x2="12"/>
-              <line x1="12" y1="8" y2="8" x2="12"/>
+      
+      {/* Wallet Card */}
+      <Card className="p-4 mb-6 bg-gradient-to-r from-primary to-red-700 text-white">
+        <div className="flex justify-between items-start">
+          <div>
+            <p className="text-sm opacity-80">Available Balance</p>
+            <h2 className="text-2xl font-bold">
+              {wallet ? formatCurrency(wallet.balance) : "Loading..."}
+            </h2>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 11V7a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v11a4 4 0 0 0 4 4h8"/>
+            <path d="M17 7v4h5a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.8a2 2 0 0 0-1.2.5"/>
+            <path d="M22 19h-9a2 2 0 0 0-2 2 2 2 0 0 0 2 2h9a2 2 0 0 0 2-2 2 2 0 0 0-2-2Z"/>
+            <path d="M11 15h6"/>
+          </svg>
+        </div>
+        <div className="mt-3 pt-3 border-t border-white/20 flex justify-between">
+          <button className="text-sm opacity-90 flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
+              <path d="M12 20v-8" />
+              <path d="M18 12l-6-6-6 6" />
+              <path d="M4 16h16" />
             </svg>
-            Details
-          </Button>
+            Add Money
+          </button>
+          <button className="text-sm opacity-90 flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
+              <line x1="12" x2="12" y1="4" y2="20"/>
+              <polyline points="6 10 12 4 18 10"/>
+            </svg>
+            Transfer
+          </button>
+          <button className="text-sm opacity-90 flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
+              <circle cx="8" cy="21" r="1"/>
+              <circle cx="19" cy="21" r="1"/>
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+            </svg>
+            Pay
+          </button>
+          <button className="text-sm opacity-90 flex flex-col items-center" onClick={() => setShowCardDetails(!showCardDetails)}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-1">
+              <rect width="20" height="14" x="2" y="5" rx="2"/>
+              <line x1="2" x2="22" y1="10" y2="10"/>
+            </svg>
+            Cards
+          </button>
         </div>
       </Card>
-
-      {/* Profile Tabs */}
-      <Tabs defaultValue="account" className="mb-6">
-        <TabsList className="grid grid-cols-3 mb-4">
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
-          <TabsTrigger value="rewards">Rewards</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="account" className="space-y-4">
-          {/* Personal Information */}
-          <Card className="p-4">
-            <h3 className="font-semibold mb-3">Personal Information</h3>
-            <div className="space-y-3 text-sm">
-              <div className="flex justify-between py-1 border-b">
-                <span className="text-gray-500">Full Name</span>
-                <span>{user.fullName}</span>
+      
+      {/* Card Details (Hidden by default) */}
+      {showCardDetails && (
+        <Card className="p-4 mb-6 bg-gray-100">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="font-semibold">Your Cards</h3>
+            <Button variant="ghost" size="sm">Manage</Button>
+          </div>
+          <div className="space-y-3">
+            <div className="p-3 bg-white rounded-xl flex justify-between items-center shadow-sm">
+              <div className="flex items-center">
+                <div className="bg-primary/10 p-2 rounded-full mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                    <rect width="20" height="14" x="2" y="5" rx="2"/>
+                    <line x1="2" x2="22" y1="10" y2="10"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-medium">Absa Gold Debit</p>
+                  <p className="text-xs text-gray-500">••••••••3456</p>
+                </div>
               </div>
-              <div className="flex justify-between py-1 border-b">
-                <span className="text-gray-500">Username</span>
-                <span>@{user.username}</span>
-              </div>
-              <div className="flex justify-between py-1 border-b">
-                <span className="text-gray-500">Email</span>
-                <span>{user.email}</span>
-              </div>
-              <div className="flex justify-between py-1 border-b">
-                <span className="text-gray-500">Phone</span>
-                <span>+27 73 123 4567</span>
-              </div>
-              <div className="flex justify-between py-1 border-b">
-                <span className="text-gray-500">ID Number</span>
-                <span>••••••••••5678</span>
-              </div>
+              <div className="bg-green-100 text-green-600 rounded-full px-2 py-1 text-xs">Active</div>
             </div>
-            <Button 
-              variant="outline" 
-              className="w-full mt-3 text-primary border-primary"
-              size="sm"
-            >
-              Edit Profile
-            </Button>
-          </Card>
-          
-          {/* Bank Accounts */}
-          <Card className="p-4">
-            <h3 className="font-semibold mb-3">Linked Bank Accounts</h3>
-            <div className="bg-gray-50 rounded-lg p-3 mb-3 flex items-center">
-              <div className="h-8 w-8 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                  <rect width="20" height="14" x="2" y="5" rx="2"/>
-                  <line x1="2" x2="22" y1="10" y2="10"/>
-                </svg>
+            <div className="p-3 bg-white rounded-xl flex justify-between items-center shadow-sm">
+              <div className="flex items-center">
+                <div className="bg-primary/10 p-2 rounded-full mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                    <rect width="20" height="14" x="2" y="5" rx="2"/>
+                    <line x1="2" x2="22" y1="10" y2="10"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-medium">Absa Rewards Credit</p>
+                  <p className="text-xs text-gray-500">••••••••7890</p>
+                </div>
               </div>
-              <div className="flex-1">
-                <p className="font-medium">Absa Gold Account</p>
-                <p className="text-xs text-gray-500">••••••••3456</p>
-              </div>
-              <Badge className="bg-green-100 text-green-600 hover:bg-green-100">Primary</Badge>
+              <div className="bg-green-100 text-green-600 rounded-full px-2 py-1 text-xs">Active</div>
             </div>
-            <Button 
-              variant="outline" 
-              className="w-full mt-1"
-              size="sm"
-            >
-              <svg className="mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <Button variant="outline" className="w-full mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
                 <path d="M12 5v14"/>
                 <path d="M5 12h14"/>
               </svg>
-              Link Account
+              Add New Card
             </Button>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="settings" className="space-y-4">
-          {/* Notification Settings */}
-          <Card className="p-4">
-            <h3 className="font-semibold mb-3">Notification Settings</h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center py-1 border-b">
-                <div>
-                  <p className="font-medium">Transaction Alerts</p>
-                  <p className="text-xs text-gray-500">Get alerts for all transactions</p>
-                </div>
-                <div className="bg-primary rounded-full w-10 h-6 flex items-center px-1">
-                  <div className="bg-white rounded-full w-4 h-4 ml-auto"></div>
-                </div>
-              </div>
-              <div className="flex justify-between items-center py-1 border-b">
-                <div>
-                  <p className="font-medium">Savings Reminders</p>
-                  <p className="text-xs text-gray-500">Weekly reminders to save</p>
-                </div>
-                <div className="bg-primary rounded-full w-10 h-6 flex items-center px-1">
-                  <div className="bg-white rounded-full w-4 h-4 ml-auto"></div>
-                </div>
-              </div>
-              <div className="flex justify-between items-center py-1 border-b">
-                <div>
-                  <p className="font-medium">Marketing Messages</p>
-                  <p className="text-xs text-gray-500">Offers and promotions</p>
-                </div>
-                <div className="bg-gray-300 rounded-full w-10 h-6 flex items-center px-1">
-                  <div className="bg-white rounded-full w-4 h-4"></div>
-                </div>
-              </div>
-            </div>
-          </Card>
-          
-          {/* Security Settings */}
-          <Card className="p-4">
-            <h3 className="font-semibold mb-3">Security Settings</h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center py-2">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 bg-primary/10 rounded-full flex items-center justify-center mr-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                    </svg>
-                  </div>
-                  <p className="font-medium">Change Password</p>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
-                  <path d="m9 18 6-6-6-6"/>
-                </svg>
-              </div>
-              <div className="flex justify-between items-center py-2">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 bg-primary/10 rounded-full flex items-center justify-center mr-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                  </div>
-                  <p className="font-medium">Security Questions</p>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
-                  <path d="m9 18 6-6-6-6"/>
-                </svg>
-              </div>
-              <div className="flex justify-between items-center py-2">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 bg-primary/10 rounded-full flex items-center justify-center mr-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                      <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3z"/>
-                      <path d="M5 10V9a7 7 0 0 1 14 0v1"/>
-                      <line x1="8" y1="17" x2="8" y2="22"/>
-                      <line x1="16" y1="17" x2="16" y2="22"/>
-                    </svg>
-                  </div>
-                  <p className="font-medium">Enable Biometrics</p>
-                </div>
-                <div className="bg-primary rounded-full w-10 h-6 flex items-center px-1">
-                  <div className="bg-white rounded-full w-4 h-4 ml-auto"></div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="rewards" className="space-y-4">
-          {/* XP Progress */}
-          <Card className="p-4">
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="font-semibold">Level {user.level} • {user.xpPoints} XP</h3>
-              <Badge className="bg-amber-100 text-amber-600 hover:bg-amber-100">{100 - (user.xpPoints % 100)} XP to Level {user.level + 1}</Badge>
-            </div>
-            <Progress value={user.xpPoints % 100} className="h-3 mb-4" />
-            
-            <div className="grid grid-cols-5 gap-1 text-center mb-3">
-              {[1, 2, 3, 4, 5].map((level) => (
-                <div 
-                  key={level}
-                  className={`rounded-lg py-2 ${level <= user.level ? 'bg-primary/10 text-primary font-medium' : 'bg-gray-100 text-gray-400'}`}
-                >
-                  {level}
-                </div>
-              ))}
-            </div>
-          </Card>
-          
-          {/* Badges */}
-          <Card className="p-4">
-            <h3 className="font-semibold mb-3">Earned Badges</h3>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="flex flex-col items-center">
-                <div className="bg-amber-100 rounded-full p-3 mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500">
-                    <circle cx="12" cy="8" r="6"/>
-                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-                  </svg>
-                </div>
-                <span className="text-xs font-medium">First Saver</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-primary/10 rounded-full p-3 mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
-                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-                    <path d="M4 22h16"/>
-                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
-                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
-                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
-                  </svg>
-                </div>
-                <span className="text-xs font-medium">Team Player</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
-                    <path d="M12.76 2.24a1 1 0 0 0-1.52 0L7.04 7a1 1 0 0 1-.9.37l-5.18-.43a1 1 0 0 0-1.1.7l-1.2 3.97a1 1 0 0 0 .2 1.05l3.3 3.3c.27.27.38.68.28 1.05l-1.2 4.4a1 1 0 0 0 .78 1.28l4.1.73c.37.07.75-.04 1.02-.3l3.3-3.3a1 1 0 0 1 1.3 0l3.3 3.3c.27.27.65.37 1.02.3l4.1-.73a1 1 0 0 0 .78-1.28l-1.2-4.4a1.1 1.1 0 0 1 .28-1.05l3.3-3.3a1 1 0 0 0 .2-1.05l-1.2-3.97a1 1 0 0 0-1.1-.7l-5.18.43a1 1 0 0 1-.9-.37l-4.2-4.76z"/>
-                  </svg>
-                </div>
-                <span className="text-xs text-gray-500">Goal Master</span>
-              </div>
-            </div>
-          </Card>
-          
-          {/* Rewards */}
-          <Card className="p-4">
-            <h3 className="font-semibold mb-3">Available Rewards</h3>
-            <div className="space-y-3">
-              <div className="bg-gray-50 rounded-lg p-3 flex justify-between items-center">
-                <div className="flex items-center">
-                  <div className="bg-green-100 text-green-600 rounded-lg p-2 mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <path d="m8 12 3 3 5-5"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-medium">R50 Voucher</p>
-                    <p className="text-xs text-gray-500">Save R1000 to unlock</p>
-                  </div>
-                </div>
-                <Button variant="outline" size="sm">Claim</Button>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-3 flex justify-between items-center">
-                <div className="flex items-center">
-                  <div className="bg-gray-200 text-gray-400 rounded-lg p-2 mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-medium">Free Movie Ticket</p>
-                    <p className="text-xs text-gray-500">Complete 3 savings goals</p>
-                  </div>
-                </div>
-                <Button variant="outline" size="sm" disabled>Locked</Button>
-              </div>
-            </div>
-          </Card>
-        </TabsContent>
-      </Tabs>
+          </div>
+        </Card>
+      )}
       
-      {/* Help & Support */}
-      <Card className="p-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <div className="h-8 w-8 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                <path d="M12 17h.01"/>
+      {/* Badges/Achievements */}
+      <div className="mb-6">
+        <h3 className="font-semibold mb-3">Your Badges</h3>
+        <div className="flex overflow-x-auto space-x-3 pb-2">
+          <div className="flex flex-col items-center">
+            <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="M12.5 2a8.2 8.2 0 0 1 6 13c-2.1 2.7-5 3-6 3H6.5a2.5 2.5 0 0 1 0-5H7a2.5 2.5 0 0 1 2.5-2.5c2 0 3 .5 3.5 1"></path>
+                <path d="M14 13.5c0-1.2-.8-1.7-2-1.7-1.2 0-2 .5-2 1.7 0 1.2.8 1.7 2 1.7 1.2 0 2-.5 2-1.7ZM23 19h1"></path>
+                <path d="M4 9c0-1 .5-2.4 2.5-2.4s2.5 1.4 2.5 2.4M14 6.5l-3.5 8M19.5 9c0-1-.5-2.4-2.5-2.4s-2.5 1.4-2.5 2.4"></path>
+                <path d="M8 12.5h8M19 16v7"></path>
+                <path d="M22 17H7c-1.7 0-2.5-1-2.5-2 0-.8.8-2 2.5-2h14"></path>
               </svg>
             </div>
-            <div>
-              <p className="font-medium">Help & Support</p>
-              <p className="text-xs text-gray-500">Contact our support team</p>
-            </div>
+            <span className="text-xs text-center">Early Saver</span>
           </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
-            <path d="m9 18 6-6-6-6"/>
-          </svg>
+          <div className="flex flex-col items-center">
+            <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="M17 8h3a2 2 0 0 1 2 2v3"></path>
+                <path d="M19 12c.6 1 1 2.1 1 3.4 0 3.8-3.1 6.9-7 6.9-1.2 0-2.4-.3-3.4-.9L8 20"></path>
+                <path d="M9 4v3"></path>
+                <path d="m14 5-4.5 4.5"></path>
+                <path d="M18 11.2c.8-.8 1.9-2.7 1.5-5.7-0.1-0.8-0.9-1.5-1.7-1.5-3 0-4.3 1.9-5.1 3"></path>
+                <path d="M9 11.7A5.7 5.7 0 0 0 7 16.5c0 3 2.5 5.5 5.5 5.5 1.8 0 3.4-.9 4.4-2.2"></path>
+                <path d="M13 7.5 9.1 11"></path>
+                <path d="M4 8H7"></path>
+                <path d="M5 19h3"></path>
+                <path d="M5 12h.1"></path>
+                <path d="M19.1 12h.09"></path>
+              </svg>
+            </div>
+            <span className="text-xs text-center">Goal Setter</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.6c-1.1 0-2-.9-2-2v-1.2A2 2 0 0 1 10 9.4h4a2 2 0 0 1 2 2v1.2c0 1.1-.9 2-2 2h-4Z"></path>
+                <path d="M9 18v4"></path>
+                <path d="M15 18v4"></path>
+                <path d="M5 9v5a2 2 0 0 0 2 2"></path>
+                <path d="M19 9v5a2 2 0 0 1-2 2"></path>
+              </svg>
+            </div>
+            <span className="text-xs text-center">Team Player</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <circle cx="12" cy="12" r="8"></circle>
+                <path d="M12 9v3l2 2"></path>
+                <path d="M3 3l5 5"></path>
+                <path d="M21 21l-5-5"></path>
+              </svg>
+            </div>
+            <span className="text-xs text-center">Always on Time</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <path d="M9 9h.01"></path>
+                <path d="M15 15h.01"></path>
+                <path d="m9.5 15 5-5"></path>
+              </svg>
+            </div>
+            <span className="text-xs text-center">Lucky Saver</span>
+          </div>
+        </div>
+      </div>
+      
+      {/* Settings */}
+      <Card className="p-4 mb-6">
+        <h3 className="font-semibold mb-4">Settings</h3>
+        
+        <div className="space-y-3">
+          <div className="flex justify-between items-center py-2">
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
+                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                <path d="M12 8a2.82 2.82 0 1 0 4 4"></path>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </svg>
+              <span>Dark Mode</span>
+            </div>
+            <Switch checked={darkMode} onCheckedChange={setDarkMode} />
+          </div>
+          
+          <div className="flex justify-between items-center py-2">
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+              </svg>
+              <span>Notifications</span>
+            </div>
+            <Switch checked={notifications} onCheckedChange={setNotifications} />
+          </div>
+          
+          <div className="flex justify-between items-center py-2">
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+              </svg>
+              <span>Auto-Save</span>
+            </div>
+            <Switch checked={autoSave} onCheckedChange={setAutoSave} />
+          </div>
+          
+          <Separator />
+          
+          <div className="flex justify-between items-center py-2">
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="M6 8h.01"></path>
+                <path d="M10 8h.01"></path>
+                <path d="M14 8h.01"></path>
+                <path d="M18 8h.01"></path>
+                <path d="M8 12h.01"></path>
+                <path d="M12 12h.01"></path>
+                <path d="M16 12h.01"></path>
+                <path d="M7 16h10"></path>
+              </svg>
+              <span>PIN & Security</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </div>
+          
+          <div className="flex justify-between items-center py-2">
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <span>Privacy</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </div>
+          
+          <div className="flex justify-between items-center py-2">
+            <div className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <span>About</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </div>
         </div>
       </Card>
       
-      {/* Logout Button */}
-      <Button 
-        variant="outline" 
-        className="w-full mt-4 border-primary text-primary"
-      >
-        <svg className="mr-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-          <polyline points="16 17 21 12 16 7"/>
-          <line x1="21" y1="12" x2="9" y2="12"/>
-        </svg>
-        Logout
-      </Button>
+      <div className="text-center">
+        <Button variant="outline" className="text-red-500">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+          Sign Out
+        </Button>
+        <p className="text-xs text-gray-500 mt-2">App Version 1.0.0</p>
+      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function Pay() {
   const [amount, setAmount] = useState<string>("");
   const [note, setNote] = useState("");
   const [showQR, setShowQR] = useState(false);
-  const [generatedQR, setGeneratedQR] = useState<string | null>(null);
+  const [generatedQR, setGeneratedQR] = useState<string>("");
   
   // Fetch wallet data
   const { data: wallet } = useQuery<UserWallet>({
@@ -154,7 +154,7 @@ export default function Pay() {
           ) : (
             <div className="text-center p-6">
               <div className="bg-white rounded-xl p-6 mb-6 flex items-center justify-center border border-gray-200">
-                <img src={generatedQR} alt="Payment QR Code" className="w-48 h-48" />
+                <img src={generatedQR || ""} alt="Payment QR Code" className="w-48 h-48" />
               </div>
               <div className="mb-4">
                 <p className="text-lg font-medium">Your PayShap QR Code</p>

@@ -23,10 +23,10 @@ export default function BottomNavigation() {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 flex justify-between items-center z-20 max-w-md mx-auto">
+    <nav className="fixed bottom-0 left-0 right-0 bg-background border-t border-border px-4 py-2 flex justify-between items-center z-20 max-w-md mx-auto">
       <button 
         onClick={() => navigateTo("/")}
-        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/" ? "text-primary" : "text-gray-500"}`}
+        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/" ? "text-primary" : "text-muted-foreground"}`}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -37,7 +37,7 @@ export default function BottomNavigation() {
       
       <button 
         onClick={() => navigateTo("/circles")}
-        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/circles" ? "text-primary" : "text-gray-500"}`}
+        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/circles" ? "text-primary" : "text-muted-foreground"}`}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -62,7 +62,7 @@ export default function BottomNavigation() {
       
       <button 
         onClick={() => navigateTo("/pay")}
-        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/pay" ? "text-primary" : "text-gray-500"}`}
+        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/pay" ? "text-primary" : "text-muted-foreground"}`}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"/>

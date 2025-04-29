@@ -32,7 +32,7 @@ export default function Layout({ children }: LayoutProps) {
   }, [circleDetails]);
 
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen relative pb-16">
+    <div className="max-w-md mx-auto bg-background min-h-screen relative pb-16">
       {/* Status Bar */}
       <div className="bg-primary text-white py-2 px-4 flex justify-between items-center">
         <div className="text-sm">{new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
@@ -43,12 +43,12 @@ export default function Layout({ children }: LayoutProps) {
       </div>
 
       {/* Header */}
-      <header className="bg-white px-4 py-3 flex justify-between items-center shadow-sm z-10 sticky top-0">
+      <header className="bg-background px-4 py-3 flex justify-between items-center shadow-sm z-10 sticky top-0 border-b border-border">
         <div className="flex items-center">
           {location !== "/" && location !== "/circles" && location !== "/create" ? (
             <button 
               onClick={() => window.history.back()} 
-              className="mr-2 rounded-full p-2 bg-gray-100"
+              className="mr-2 rounded-full p-2 bg-secondary text-foreground hover:bg-muted"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m15 18-6-6 6-6"/>
@@ -61,19 +61,19 @@ export default function Layout({ children }: LayoutProps) {
               <path d="M20 10H60V20H20V10Z" fill="#E30613"/>
             </svg>
           )}
-          <h1 className="font-semibold text-lg text-gray-900">
+          <h1 className="font-semibold text-lg text-foreground">
             {circleTitle ? circleTitle : "MoneyCircles"}
           </h1>
         </div>
         <div className="flex items-center space-x-2">
           <ThemeToggle />
-          <button className="rounded-full p-2 bg-gray-100 hover:bg-gray-200">
+          <button className="rounded-full p-2 bg-secondary text-foreground hover:bg-muted">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
               <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
             </svg>
           </button>
-          <button className="rounded-full p-2 bg-gray-100 hover:bg-gray-200">
+          <button className="rounded-full p-2 bg-secondary text-foreground hover:bg-muted">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
               <circle cx="12" cy="7" r="4"/>

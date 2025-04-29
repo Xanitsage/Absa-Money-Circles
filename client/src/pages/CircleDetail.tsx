@@ -277,7 +277,7 @@ export default function CircleDetail() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center">
-                        <h4 className="font-medium">{member.name}</h4>
+                        <h4 className="font-medium">User {member.id}</h4>
                         {member.isYou && <span className="ml-2 text-xs bg-gray-100 px-2 py-0.5 rounded-full">You</span>}
                         {member.role === 'Circle Admin' && <span className="ml-2 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">Admin</span>}
                       </div>

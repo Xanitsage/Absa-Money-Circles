@@ -72,6 +72,13 @@ export default function Circles() {
           <Button 
             variant="outline" 
             className="flex-1 border-primary text-primary rounded-full"
+            onClick={() => {
+              // Open the join section with invite code focused
+              const joinCodeInput = document.querySelector('input[placeholder="Enter invite code"]');
+              if (joinCodeInput) {
+                (joinCodeInput as HTMLInputElement).focus();
+              }
+            }}
           >
             Join Circle
           </Button>
@@ -114,7 +121,7 @@ export default function Circles() {
           <div className="py-8 text-center">Loading circles...</div>
         ) : circles && circles.length > 0 ? (
           circles.map((circle) => (
-            <Card key={circle.id} className="p-4 mb-3">
+            <Card key={circle.id} className="p-4 mb-3" onClick={() => setLocation(`/circle/${circle.id}`)} style={{ cursor: 'pointer' }}>
               <div className="flex justify-between items-center mb-3">
                 <div className="flex items-center">
                   <div className={`${
@@ -157,12 +164,12 @@ export default function Circles() {
               <div className="mt-3 flex overflow-hidden">
                 <div className="flex -space-x-2">
                   {circle.members.slice(0, 3).map((member, index) => (
-                    <img 
+                    <div 
                       key={index}
-                      src={`https://i.pravatar.cc/150?img=${index + 1}`} 
-                      className="w-6 h-6 rounded-full border border-white" 
-                      alt={member.name}
-                    />
+                      className="w-6 h-6 bg-primary text-white rounded-full border border-white flex items-center justify-center text-xs font-medium"
+                    >
+                      {member.id}
+                    </div>
                   ))}
                   {circle.members.length > 3 && (
                     <div className="w-6 h-6 rounded-full border border-white bg-gray-100 flex items-center justify-center text-xs">

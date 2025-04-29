@@ -171,11 +171,11 @@ export default function CircleDetail() {
                 activities.map((activity) => (
                   <div key={activity.id} className="flex items-center py-3 border-b border-gray-200">
                     {activity.type === 'contribution' ? (
-                      <img 
-                        src={`https://i.pravatar.cc/150?img=${activity.id}`} 
-                        className="w-10 h-10 rounded-full mr-3" 
-                        alt={activity.user}
-                      />
+                      <div 
+                        className="w-10 h-10 bg-primary text-white rounded-full mr-3 flex items-center justify-center font-medium"
+                      >
+                        {activity.id}
+                      </div>
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mr-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -186,7 +186,7 @@ export default function CircleDetail() {
                     <div className="flex-1">
                       <div className="flex justify-between">
                         <h4 className="font-medium">
-                          {activity.type === 'contribution' ? activity.user : 'Milestone Reached'}
+                          {activity.type === 'contribution' ? `User ${activity.id}` : 'Milestone Reached'}
                         </h4>
                         <span className="text-sm text-gray-500">{activity.timeAgo}</span>
                       </div>
@@ -215,13 +215,13 @@ export default function CircleDetail() {
                 members.map((member) => (
                   <Card key={member.id} className="p-4 mb-3">
                     <div className="flex items-center mb-2">
-                      <img 
-                        src={`https://i.pravatar.cc/150?img=${member.id}`} 
-                        className="w-10 h-10 rounded-full mr-3" 
-                        alt={member.name}
-                      />
+                      <div 
+                        className="w-10 h-10 bg-primary text-white rounded-full mr-3 flex items-center justify-center font-medium"
+                      >
+                        {member.id}
+                      </div>
                       <div className="flex-1">
-                        <h4 className="font-medium">{member.name} {member.isYou ? '(You)' : ''}</h4>
+                        <h4 className="font-medium">User {member.id} {member.isYou ? '(You)' : ''}</h4>
                         <p className="text-xs text-gray-500">{member.role}</p>
                       </div>
                       <div className={`${
@@ -270,11 +270,11 @@ export default function CircleDetail() {
               members.map((member) => (
                 <Card key={member.id} className="p-4">
                   <div className="flex items-center">
-                    <img 
-                      src={`https://i.pravatar.cc/150?img=${member.id}`} 
-                      className="w-12 h-12 rounded-full mr-3" 
-                      alt={member.name}
-                    />
+                    <div 
+                      className="w-12 h-12 bg-primary text-white rounded-full mr-3 flex items-center justify-center font-medium"
+                    >
+                      {member.id}
+                    </div>
                     <div className="flex-1">
                       <div className="flex items-center">
                         <h4 className="font-medium">{member.name}</h4>

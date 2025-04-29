@@ -30,12 +30,12 @@ export default function Profile() {
       <div className="flex items-center mb-6">
         <Avatar className="h-20 w-20 border-4 border-primary">
           <div className="bg-primary text-white text-xl font-semibold h-full w-full flex items-center justify-center">
-            {user?.fullName?.split(' ').map(n => n[0]).join('')}
+            {user?.id || "1"}
           </div>
         </Avatar>
         <div className="ml-4">
-          <h1 className="text-2xl font-bold">{user?.fullName || "Loading..."}</h1>
-          <p className="text-gray-500">{user?.email || ""}</p>
+          <h1 className="text-2xl font-bold">{"User " + (user?.id || "1")}</h1>
+          <p className="text-gray-500">user@gmail.com</p>
           <div className="flex items-center mt-1">
             <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
               Level {user?.level || 1}

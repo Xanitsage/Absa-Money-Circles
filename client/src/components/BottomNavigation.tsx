@@ -9,10 +9,12 @@ export default function BottomNavigation() {
     // Set active tab based on current location
     if (location === "/") {
       setActiveTab("/");
-    } else if (location === "/circles") {
+    } else if (location === "/circles" || location.startsWith("/circle/")) {
       setActiveTab("/circles");
-    } else if (location.startsWith("/circle/")) {
-      setActiveTab("/circles");
+    } else if (location === "/profile") {
+      setActiveTab("/profile");
+    } else if (location === "/pay") {
+      setActiveTab("/pay");
     }
   }, [location]);
 
@@ -58,7 +60,10 @@ export default function BottomNavigation() {
         </button>
       </div>
       
-      <button className="flex flex-col items-center px-3 py-1 text-gray-500">
+      <button 
+        onClick={() => navigateTo("/pay")}
+        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/pay" ? "text-primary" : "text-gray-500"}`}
+      >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <path d="m16 10-4 4-4-4"/>
@@ -66,7 +71,10 @@ export default function BottomNavigation() {
         <span className="text-xs mt-1">Pay</span>
       </button>
       
-      <button className="flex flex-col items-center px-3 py-1 text-gray-500">
+      <button 
+        onClick={() => navigateTo("/profile")}
+        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/profile" ? "text-primary" : "text-gray-500"}`}
+      >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
           <circle cx="12" cy="7" r="4"/>

@@ -45,6 +45,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // API routes
+  
+  // Get current user
+  app.get('/api/user', async (req: Request, res: Response) => {
+    try {
+      // For now, simulate user ID 1 as the logged-in user
+      const userId = 1;
+      const user = await storage.getUser(userId);
+      
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      
+      res.json(user);
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      res.status(500).json({ message: 'Failed to fetch user' });
+    }
+  });
   app.get('/api/wallet', async (req: Request, res: Response) => {
     try {
       // For now, simulate user ID 1 as the logged-in user

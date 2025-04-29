@@ -40,6 +40,7 @@ export interface IStorage {
   getMoneyCircles(userId: number): Promise<MoneyCircle[]>;
   getMoneyCircle(id: number): Promise<MoneyCircle | undefined>;
   createMoneyCircle(circle: CreateCircleData, userId: number): Promise<MoneyCircle>;
+  updateMoneyCircle(id: number, circle: Partial<MoneyCircle>): Promise<MoneyCircle | undefined>;
   getCircleDetails(id: number): Promise<CircleDetails | undefined>;
   getCircleByInviteCode(code: string): Promise<MoneyCircle | undefined>;
   joinCircle(circleId: number, userId: number): Promise<boolean>;
@@ -381,6 +382,15 @@ export class MemStorage implements IStorage {
     this.circleActivities.set(activity.id, activity);
     
     return newCircle;
+  }
+
+  async updateMoneyCircle(id: number, update: Partial<MoneyCircle>): Promise<MoneyCircle | undefined> {
+    const circle = this.moneyCircles.get(id);
+    if (!circle) return undefined;
+    
+    const updatedCircle = { ...circle, ...update };
+    this.moneyCircles.set(id, updatedCircle);
+    return updatedCircle;
   }
 
   async getCircleDetails(id: number): Promise<CircleDetails | undefined> {

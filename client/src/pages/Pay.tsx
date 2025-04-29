@@ -8,7 +8,11 @@ import { UserWallet } from "@shared/schema";
 import { formatCurrency } from "@/lib/utils";
 
 export default function Pay() {
-  const [activeTab, setActiveTab] = useState("scan");
+  // Get tab parameter from URL if available
+  const urlParams = new URLSearchParams(window.location.search);
+  const tabParam = urlParams.get('tab');
+  
+  const [activeTab, setActiveTab] = useState(tabParam || "scan");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [amount, setAmount] = useState<string>("");
   const [note, setNote] = useState("");
@@ -121,7 +125,7 @@ export default function Pay() {
       </Card>
 
       {/* Payment Tabs */}
-      <Tabs defaultValue="scan" className="mb-6" onValueChange={setActiveTab}>
+      <Tabs defaultValue={activeTab} value={activeTab} className="mb-6" onValueChange={setActiveTab}>
         <TabsList className="grid grid-cols-3">
           <TabsTrigger value="scan">Scan QR</TabsTrigger>
           <TabsTrigger value="phone">Pay Phone</TabsTrigger>

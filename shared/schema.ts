@@ -175,6 +175,13 @@ export interface MoneyCircle {
   targetAmount: number;
   currentAmount: number;
   targetDate: string;
+  contributionFrequency: string;
+  autoSave: boolean;
+  celebrateMilestones: boolean;
+  createdById: number;
+  createdAt: Date;
+  inviteCode: string;
+  // UI display fields
   memberCount: number;
   members: MoneyCircleMember[];
   unreadMessages: number;

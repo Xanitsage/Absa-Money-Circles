@@ -216,12 +216,12 @@ export default function Home() {
                 <div className="mt-3 flex overflow-hidden">
                   <div className="flex -space-x-2">
                     {circle.members.slice(0, 3).map((member, index) => (
-                      <img 
+                      <div 
                         key={index}
-                        src={`https://i.pravatar.cc/150?img=${index + 1}`} 
-                        className="w-6 h-6 rounded-full border border-white" 
-                        alt={member.name}
-                      />
+                        className="w-6 h-6 bg-primary text-white rounded-full border border-white flex items-center justify-center text-xs font-medium"
+                      >
+                        {member.id}
+                      </div>
                     ))}
                     {circle.members.length > 3 && (
                       <div className="w-6 h-6 rounded-full border border-white bg-gray-100 flex items-center justify-center text-xs">

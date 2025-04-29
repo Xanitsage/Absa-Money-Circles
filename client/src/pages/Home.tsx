@@ -63,7 +63,7 @@ export default function Home() {
       <Card className="p-4 mb-6">
         <div className="flex justify-between items-center mb-3">
           <h3 className="font-semibold text-lg">My Missions</h3>
-          <span className="text-xs bg-gray-100 px-2 py-1 rounded-full">Level 2</span>
+          <span className="text-xs bg-secondary px-2 py-1 rounded-full">Level 2</span>
         </div>
         <Progress value={65} className="h-4 mb-2" />
         <div className="flex justify-between text-xs">
@@ -71,15 +71,15 @@ export default function Home() {
           <span>100 XP needed for Level 3</span>
         </div>
         <div className="mt-4 flex space-x-2">
-          <div className="flex-1 bg-gray-100 rounded-lg p-3 text-center">
+          <div className="flex-1 bg-secondary rounded-lg p-3 text-center">
             <span className="text-amber-500 text-lg block mb-1">🪙</span>
             <span className="text-xs">Save R500 more</span>
           </div>
-          <div className="flex-1 bg-gray-100 rounded-lg p-3 text-center">
+          <div className="flex-1 bg-secondary rounded-lg p-3 text-center">
             <span className="text-primary text-lg block mb-1">👥</span>
             <span className="text-xs">Invite a friend</span>
           </div>
-          <div className="flex-1 bg-gray-100 rounded-lg p-3 text-center">
+          <div className="flex-1 bg-secondary rounded-lg p-3 text-center">
             <span className="text-green-500 text-lg block mb-1">❓</span>
             <span className="text-xs">Take a quiz</span>
           </div>
@@ -89,7 +89,7 @@ export default function Home() {
       {/* Quick Actions */}
       <div className="grid grid-cols-4 gap-4 mb-6">
         <button className="flex flex-col items-center">
-          <div className="bg-gray-100 rounded-full p-3 mb-1">
+          <div className="bg-secondary rounded-full p-3 mb-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
               <line x1="22" x2="11" y1="2" y2="13"/>
               <polygon points="22 2 15 22 11 13 2 9 22 2"/>
@@ -98,7 +98,7 @@ export default function Home() {
           <span className="text-xs">Send</span>
         </button>
         <button className="flex flex-col items-center">
-          <div className="bg-gray-100 rounded-full p-3 mb-1">
+          <div className="bg-secondary rounded-full p-3 mb-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
               <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
               <rect width="3" height="3" x="7" y="7"/>
@@ -110,7 +110,7 @@ export default function Home() {
           <span className="text-xs">Pay QR</span>
         </button>
         <button className="flex flex-col items-center">
-          <div className="bg-gray-100 rounded-full p-3 mb-1">
+          <div className="bg-secondary rounded-full p-3 mb-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
               <circle cx="12" cy="12" r="10"/>
               <path d="M12 6v6l4 2"/>
@@ -119,7 +119,7 @@ export default function Home() {
           <span className="text-xs">Request</span>
         </button>
         <button className="flex flex-col items-center">
-          <div className="bg-gray-100 rounded-full p-3 mb-1">
+          <div className="bg-secondary rounded-full p-3 mb-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
               <circle cx="12" cy="12" r="1"/>
               <circle cx="19" cy="12" r="1"/>
@@ -160,7 +160,7 @@ export default function Home() {
               />
               <div className="flex justify-between text-sm">
                 <span className="font-medium">{formatCurrency(saving.currentAmount)} saved</span>
-                <span className="text-gray-500">Goal: {formatCurrency(saving.targetAmount)}</span>
+                <span className="text-muted-foreground">Goal: {formatCurrency(saving.targetAmount)}</span>
               </div>
             </Card>
           ))
@@ -201,7 +201,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium">{circle.name}</h4>
-                      <p className="text-xs text-gray-500">{circle.memberCount} members</p>
+                      <p className="text-xs text-muted-foreground">{circle.memberCount} members</p>
                     </div>
                   </div>
                   <ProgressCircle 

@@ -21,6 +21,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import DevicesIcon from '@mui/icons-material/Devices';
 import InfoIcon from '@mui/icons-material/Info';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function Pay() {
   // Get tab parameter from URL if available
@@ -40,6 +41,7 @@ export default function Pay() {
   const [merchantAmount, setMerchantAmount] = useState<string>("");
   const [merchantQR, setMerchantQR] = useState<string>("");
   const [merchantQRVisible, setMerchantQRVisible] = useState(false);
+  const [showTapInfo, setShowTapInfo] = useState(true);
   
   // Fetch wallet data
   const { data: wallet } = useQuery<UserWallet>({
@@ -410,17 +412,34 @@ export default function Pay() {
                 </div>
               </div>
               
-              <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                <h4 className="font-medium text-primary flex items-center mb-2">
-                  <InfoIcon className="mr-2" style={{ width: '18px', height: '18px' }} />
-                  How Tap on Phone Works
-                </h4>
-                <p className="text-sm text-gray-700">
-                  Tap on Phone allows businesses to accept payments from any contactless card or mobile wallet right from their 
-                  NFC-enabled device. With no extra hardware required, businesses can take advantage of this on-the-go solution 
-                  to enable quick and convenient payment options.
-                </p>
-              </div>
+              {showTapInfo ? (
+                <div className="bg-blue-50 rounded-lg p-4 mb-6 relative">
+                  <button 
+                    onClick={() => setShowTapInfo(false)} 
+                    className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+                    aria-label="Close information"
+                  >
+                    <CloseIcon style={{ width: '16px', height: '16px' }} />
+                  </button>
+                  <h4 className="font-medium text-primary flex items-center mb-2">
+                    <InfoIcon className="mr-2" style={{ width: '18px', height: '18px' }} />
+                    How Tap on Phone Works
+                  </h4>
+                  <p className="text-sm text-gray-700">
+                    Tap on Phone allows businesses to accept payments from any contactless card or mobile wallet right from their 
+                    NFC-enabled device. With no extra hardware required, businesses can take advantage of this on-the-go solution 
+                    to enable quick and convenient payment options.
+                  </p>
+                </div>
+              ) : (
+                <button 
+                  onClick={() => setShowTapInfo(true)}
+                  className="flex items-center justify-center text-xs text-primary mb-6 bg-blue-50/50 p-2 rounded-lg w-full"
+                >
+                  <InfoIcon className="mr-1" style={{ width: '14px', height: '14px' }} />
+                  Show "How Tap on Phone Works" info
+                </button>
+              )}
             
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">Business Name / Your Name</label>

@@ -11,20 +11,26 @@ import CreateCircle from "@/pages/CreateCircle";
 import CircleDetail from "@/pages/CircleDetail";
 import Profile from "@/pages/Profile";
 import Pay from "@/pages/Pay";
+import AbsaAppHome from "@/pages/AbsaAppHome";
 
 function Router() {
   return (
-    <Layout>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/circles" component={Circles} />
-        <Route path="/create" component={CreateCircle} />
-        <Route path="/circle/:id" component={CircleDetail} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/pay" component={Pay} />
-        <Route component={NotFound} />
-      </Switch>
-    </Layout>
+    <Switch>
+      <Route path="/absa-app" component={AbsaAppHome} />
+      <Route path="*">
+        <Layout>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/circles" component={Circles} />
+            <Route path="/create" component={CreateCircle} />
+            <Route path="/circle/:id" component={CircleDetail} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/pay" component={Pay} />
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
+      </Route>
+    </Switch>
   );
 }
 

@@ -57,11 +57,16 @@ export default function Layout({ children }: LayoutProps) {
               </svg>
             </button>
           ) : (
-            <img 
-              src={absaLogo} 
-              alt="Absa Logo" 
-              className="h-8 mr-2" 
-            />
+            <button
+              onClick={() => setLocation('/absa-app')}
+              className="flex items-center justify-center"
+            >
+              <img 
+                src={absaLogo} 
+                alt="Absa Logo" 
+                className="h-8 mr-2" 
+              />
+            </button>
           )}
           <h1 className="font-semibold text-lg text-foreground">
             {circleTitle ? circleTitle : "Money Circles"}

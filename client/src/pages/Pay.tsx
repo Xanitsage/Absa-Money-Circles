@@ -276,20 +276,20 @@ export default function Pay() {
 
       {/* Payment Tabs */}
       <Tabs defaultValue={activeTab} value={activeTab} className="mb-6" onValueChange={setActiveTab}>
-        <TabsList className="grid grid-cols-4">
-          <TabsTrigger value="scan" className="flex items-center space-x-1">
+        <TabsList className="grid grid-cols-4 gap-2 p-2">
+          <TabsTrigger value="scan" className="flex items-center space-x-2 px-1">
             <QrCodeIcon fontSize="small" />
             <span>Scan QR</span>
           </TabsTrigger>
-          <TabsTrigger value="phone" className="flex items-center space-x-1">
+          <TabsTrigger value="phone" className="flex items-center space-x-2 px-1">
             <PhoneAndroidIcon fontSize="small" />
             <span>Pay Phone</span>
           </TabsTrigger>
-          <TabsTrigger value="request" className="flex items-center space-x-1">
+          <TabsTrigger value="request" className="flex items-center space-x-2 px-1">
             <NotificationsIcon fontSize="small" />
             <span>Request</span>
           </TabsTrigger>
-          <TabsTrigger value="merchant" className="flex items-center space-x-1">
+          <TabsTrigger value="merchant" className="flex items-center space-x-2 px-1">
             <StorefrontIcon fontSize="small" />
             <span>Merchant</span>
           </TabsTrigger>

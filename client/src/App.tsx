@@ -12,6 +12,7 @@ import CircleDetail from "@/pages/CircleDetail";
 import Profile from "@/pages/Profile";
 import Pay from "@/pages/Pay";
 import AbsaAppHome from "@/pages/AbsaAppHome";
+import Notifications from "@/pages/Notifications"; // Import the Notifications component
 
 function Router() {
   return (
@@ -26,6 +27,7 @@ function Router() {
             <Route path="/circle/:id" component={CircleDetail} />
             <Route path="/profile" component={Profile} />
             <Route path="/pay" component={Pay} />
+            <Route path="/notifications" component={Notifications} /> {/* Added Notifications route */}
             <Route component={NotFound} />
           </Switch>
         </Layout>

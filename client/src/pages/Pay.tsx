@@ -27,14 +27,14 @@ export default function Pay() {
   // Get tab parameter from URL if available
   const urlParams = new URLSearchParams(window.location.search);
   const tabParam = urlParams.get('tab');
-  
+
   const [activeTab, setActiveTab] = useState(tabParam || "scan");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [amount, setAmount] = useState<string>("");
   const [note, setNote] = useState("");
   const [showQR, setShowQR] = useState(false);
   const [generatedQR, setGeneratedQR] = useState<string>("");
-  
+
   // Merchant mode
   const [businessName, setBusinessName] = useState("");
   const [itemDescription, setItemDescription] = useState("");
@@ -42,7 +42,7 @@ export default function Pay() {
   const [merchantQR, setMerchantQR] = useState<string>("");
   const [merchantQRVisible, setMerchantQRVisible] = useState(false);
   const [showTapInfo, setShowTapInfo] = useState(true);
-  
+
   // Fetch wallet data
   const { data: wallet } = useQuery<UserWallet>({
     queryKey: ['/api/wallet']
@@ -122,7 +122,7 @@ export default function Pay() {
   // Generate merchant QR code with actual payment information
   const generateMerchantQR = () => {
     if (!businessName || !merchantAmount) return;
-    
+
     // Create payment data that will be encoded in the QR code
     const paymentData = {
       v: 1, // version
@@ -135,13 +135,13 @@ export default function Pay() {
       acceptsNonAbsa: true,
       paymentType: "instant"
     };
-    
+
     // Convert payment data to a string
     const paymentDataString = JSON.stringify(paymentData);
-    
+
     // In a real app, this would generate a proper QR code from the data
     // For now, we'll create a more basic QR code representation
-    
+
     // Create a simpler, more reliable QR code image
     const qrCodeSvg = `
       <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
@@ -152,17 +152,17 @@ export default function Pay() {
           <rect x="20" y="20" width="40" height="40" />
           <rect x="25" y="25" width="30" height="30" fill="white" />
           <rect x="30" y="30" width="20" height="20" />
-          
+
           <!-- Position Detection Pattern - Top Right -->
           <rect x="140" y="20" width="40" height="40" />
           <rect x="145" y="25" width="30" height="30" fill="white" />
           <rect x="150" y="30" width="20" height="20" />
-          
+
           <!-- Position Detection Pattern - Bottom Left -->
           <rect x="20" y="140" width="40" height="40" />
           <rect x="25" y="145" width="30" height="30" fill="white" />
           <rect x="30" y="150" width="20" height="20" />
-          
+
           <!-- Data Cells (Grid pattern) -->
           <rect x="70" y="20" width="10" height="10" />
           <rect x="90" y="20" width="10" height="10" />
@@ -194,18 +194,18 @@ export default function Pay() {
           <rect x="60" y="170" width="10" height="10" />
           <rect x="100" y="170" width="10" height="10" />
           <rect x="140" y="170" width="10" height="10" />
-          
+
           <!-- ABSA Logo (Center) -->
           <circle cx="100" cy="100" r="25" fill="white" />
           <circle cx="100" cy="100" r="22" fill="#DC0037" />
           <text x="100" y="107" font-family="Arial" font-size="22" fill="white" font-weight="bold" text-anchor="middle">A</text>
         </g>
-        
+
         <!-- Hidden payment data -->
         <text x="0" y="0" font-size="0.1" style="display:none">${encodeURIComponent(paymentDataString)}</text>
       </svg>
     `;
-    
+
     setMerchantQR(qrCodeSvg);
     setMerchantQRVisible(true);
   };
@@ -213,24 +213,24 @@ export default function Pay() {
   // Handle pay by phone
   const handlePayByPhone = () => {
     if (!phoneNumber || !amount) return;
-    
+
     // In a real app, you'd connect to a payment API here
     // For now, we'll just show an alert
     alert(`Payment of ${formatCurrency(parseFloat(amount))} to ${phoneNumber} initiated!`);
-    
+
     // Reset form
     setPhoneNumber("");
     setAmount("");
     setNote("");
   };
-  
+
   // Simulate QR code scan - when merchant code is clicked/tapped
   const simulateQRScan = () => {
     if (!merchantQRVisible) return;
-    
+
     // In a real app, this would be done by scanning the QR with a camera
     // For now, we'll simulate it by "parsing" our embedded data and showing a payment flow
-    
+
     // Extract payment data from our hidden QR code content
     try {
       // Get the payment data encoded in the QR code
@@ -238,13 +238,13 @@ export default function Pay() {
       if (paymentDataMatch && paymentDataMatch[1]) {
         const paymentDataString = decodeURIComponent(paymentDataMatch[1]);
         const paymentData = JSON.parse(paymentDataString);
-        
+
         // Show payment confirmation dialog
         if (confirm(`Pay ${paymentData.merchant}\nAmount: R${paymentData.amount}\n${paymentData.description ? `For: ${paymentData.description}\n` : ""}Reference: ${paymentData.reference}\n\nProceed with payment?`)) {
           // Simulate payment processing with timeout
           setTimeout(() => {
             alert(`Payment successful!\nR${paymentData.amount} paid to ${paymentData.merchant}\nTransaction ID: ABSA-${Math.floor(100000000 + Math.random() * 900000000)}`);
-            
+
             // Reset merchant form after successful payment
             setMerchantQRVisible(false);
             setBusinessName("");
@@ -265,7 +265,7 @@ export default function Pay() {
         <h1 className="text-2xl font-bold mb-2">Pay</h1>
         <p className="text-gray-600">Send money quickly and easily</p>
       </div>
-      
+
       {/* Wallet Balance Card */}
       <Card className="p-4 mb-6 bg-primary text-white">
         <p className="text-sm opacity-80 mb-1">Available Balance</p>
@@ -281,20 +281,20 @@ export default function Pay() {
             <QrCodeIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Scan QR</span>
           </TabsTrigger>
-          <TabsTrigger value="phone" className="flex items-center text-xs py-1.5">
+          <TabsTrigger value="phone" className="flex items-center text-xs py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <PhoneAndroidIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Pay Phone</span>
           </TabsTrigger>
-          <TabsTrigger value="request" className="flex items-center text-xs py-1.5">
+          <TabsTrigger value="request" className="flex items-center text-xs py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <NotificationsIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Request</span>
           </TabsTrigger>
-          <TabsTrigger value="merchant" className="flex items-center text-xs py-1.5">
+          <TabsTrigger value="merchant" className="flex items-center text-xs py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <StorefrontIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Merchant</span>
           </TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="scan" className="mt-4">
           {!showQR ? (
             <div className="text-center p-6">
@@ -328,7 +328,7 @@ export default function Pay() {
             </div>
           )}
         </TabsContent>
-        
+
         <TabsContent value="phone" className="mt-4 space-y-4">
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Phone Number</label>
@@ -339,7 +339,7 @@ export default function Pay() {
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
-          
+
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Amount (ZAR)</label>
             <div className="relative">
@@ -354,7 +354,7 @@ export default function Pay() {
               />
             </div>
           </div>
-          
+
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Note (Optional)</label>
             <Input 
@@ -363,7 +363,7 @@ export default function Pay() {
               onChange={(e) => setNote(e.target.value)}
             />
           </div>
-          
+
           <Button 
             onClick={handlePayByPhone}
             disabled={!phoneNumber || !amount}
@@ -372,7 +372,7 @@ export default function Pay() {
             <SendIcon className="mr-2" />
             Send Money
           </Button>
-          
+
           <div className="pt-4">
             <p className="text-sm font-medium mb-2">Recent Recipients</p>
             <div className="grid grid-cols-4 gap-3">
@@ -387,13 +387,13 @@ export default function Pay() {
             </div>
           </div>
         </TabsContent>
-        
+
         <TabsContent value="request" className="mt-4 space-y-4">
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Request From</label>
             <Input placeholder="Enter phone number or email" />
           </div>
-          
+
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Amount (ZAR)</label>
             <div className="relative">
@@ -401,12 +401,12 @@ export default function Pay() {
               <Input type="number" style={{ paddingLeft: "2rem" }} className="text-left" placeholder="0.00" />
             </div>
           </div>
-          
+
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Reason (Optional)</label>
             <Input placeholder="What's this for?" />
           </div>
-          
+
           <Button className="w-full rounded-full">
             <NotificationsIcon className="mr-2" />
             Request Money
@@ -432,7 +432,7 @@ export default function Pay() {
                   <p className="text-xs text-gray-500">Accept contactless card payments</p>
                 </div>
               </div>
-              
+
               {showTapInfo ? (
                 <div className="bg-blue-50 rounded-lg p-4 mb-6 relative">
                   <button 
@@ -461,7 +461,7 @@ export default function Pay() {
                   Show "How Tap on Phone Works" info
                 </button>
               )}
-            
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">Business Name / Your Name</label>
                 <Input 
@@ -470,7 +470,7 @@ export default function Pay() {
                   onChange={(e) => setBusinessName(e.target.value)}
                 />
               </div>
-              
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">Amount (ZAR)</label>
                 <div className="relative">
@@ -485,7 +485,7 @@ export default function Pay() {
                   />
                 </div>
               </div>
-              
+
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">Item Description (Optional)</label>
                 <Input 
@@ -494,7 +494,7 @@ export default function Pay() {
                   onChange={(e) => setItemDescription(e.target.value)}
                 />
               </div>
-              
+
               <Button 
                 onClick={generateMerchantQR}
                 disabled={!businessName || !merchantAmount}
@@ -533,7 +533,7 @@ export default function Pay() {
           )}
         </TabsContent>
       </Tabs>
-      
+
       {/* Payment Methods */}
       <Card className="p-4">
         <h3 className="font-medium mb-3">Payment Methods</h3>

@@ -37,12 +37,12 @@ export default function Profile() {
       <div className="flex items-center mb-6">
         <Avatar className="h-20 w-20 border-4 border-primary">
           <div className="bg-primary text-white text-xl font-semibold h-full w-full flex items-center justify-center">
-            {user?.id || "1"}
+            LM
           </div>
         </Avatar>
         <div className="ml-4">
-          <h1 className="text-2xl font-bold">{"User " + (user?.id || "1")}</h1>
-          <p className="text-gray-500">user@gmail.com</p>
+          <h1 className="text-2xl font-bold">Lindokuhle Msiza</h1>
+          <p className="text-gray-500">lindokuhle.msiza@gmail.com</p>
           <div className="flex items-center mt-1">
             <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
               Level {user?.level || 1}
@@ -121,7 +121,7 @@ export default function Profile() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-medium">Absa Gold Debit</p>
+                  <p className="font-medium">Lindokuhle Msiza - Gold Debit</p>
                   <p className="text-xs text-gray-500">••••••••3456</p>
                 </div>
               </div>
@@ -136,7 +136,7 @@ export default function Profile() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-medium">Absa Rewards Credit</p>
+                  <p className="font-medium">Lindokuhle Msiza - Rewards Credit</p>
                   <p className="text-xs text-gray-500">••••••••7890</p>
                 </div>
               </div>

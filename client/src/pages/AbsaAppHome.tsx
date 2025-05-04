@@ -164,10 +164,10 @@ export default function AbsaAppHome() {
           <div className="bg-[#DC0037] p-4 text-white">
             <div className="flex items-center">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#DC0037] font-bold mr-3">
-                <span>SW</span>
+                <span>LM</span>
               </div>
               <div className="flex-1">
-                <h2 className="font-bold text-sm text-white uppercase">SBONISO WILL LINDOKUHLE MSIZA</h2>
+                <h2 className="font-bold text-sm text-white uppercase">LINDOKUHLE MSIZA</h2>
                 <p className="text-xs text-white/80">Personal Bank Account</p>
               </div>
               <button 

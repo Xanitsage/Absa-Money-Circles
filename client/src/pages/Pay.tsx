@@ -281,9 +281,9 @@ export default function Pay() {
             <QrCodeIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Scan QR</span>
           </TabsTrigger>
-          <TabsTrigger value="phone" className="flex items-center justify-center gap-1 text-xs py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
+          <TabsTrigger value="phone" className="flex items-center justify-center gap-1 text-xs py-1.5 px-2 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <PhoneAndroidIcon style={{ fontSize: '16px' }} />
-            Pay Phone
+            <span className="whitespace-nowrap">Pay Phone</span>
           </TabsTrigger>
           <TabsTrigger value="request" className="flex items-center text-xs py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <NotificationsIcon style={{ fontSize: '16px' }} className="mr-1" />

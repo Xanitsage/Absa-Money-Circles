@@ -276,21 +276,21 @@ export default function Pay() {
 
       {/* Payment Tabs */}
       <Tabs defaultValue={activeTab} value={activeTab} className="mb-6" onValueChange={setActiveTab}>
-        <TabsList className="grid grid-cols-4 gap-2 p-2">
-          <TabsTrigger value="scan" className="flex items-center space-x-2 px-1">
-            <QrCodeIcon fontSize="small" />
+        <TabsList className="grid grid-cols-4 gap-3 p-1">
+          <TabsTrigger value="scan" className="flex items-center text-xs py-1.5">
+            <QrCodeIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Scan QR</span>
           </TabsTrigger>
-          <TabsTrigger value="phone" className="flex items-center space-x-2 px-1">
-            <PhoneAndroidIcon fontSize="small" />
+          <TabsTrigger value="phone" className="flex items-center text-xs py-1.5">
+            <PhoneAndroidIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Pay Phone</span>
           </TabsTrigger>
-          <TabsTrigger value="request" className="flex items-center space-x-2 px-1">
-            <NotificationsIcon fontSize="small" />
+          <TabsTrigger value="request" className="flex items-center text-xs py-1.5">
+            <NotificationsIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Request</span>
           </TabsTrigger>
-          <TabsTrigger value="merchant" className="flex items-center space-x-2 px-1">
-            <StorefrontIcon fontSize="small" />
+          <TabsTrigger value="merchant" className="flex items-center text-xs py-1.5">
+            <StorefrontIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span>Merchant</span>
           </TabsTrigger>
         </TabsList>

@@ -9,7 +9,8 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "rounded-lg border bg-card text-card-foreground shadow-sm relative",
+      "has-icon:pl-12 has-icon:min-h-[3rem]", // Add spacing for icons
       className
     )}
     {...props}

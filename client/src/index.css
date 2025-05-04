@@ -1,3 +1,14 @@
+
+/* Card icon positioning */
+.has-icon .card-icon {
+  @apply absolute left-3 top-1/2 -translate-y-1/2;
+  @apply bg-secondary rounded-full p-3;
+}
+
+.has-icon .card-icon svg {
+  @apply text-primary w-5 h-5;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

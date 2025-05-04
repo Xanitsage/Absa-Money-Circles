@@ -35,25 +35,40 @@ export default function AbsaAppHome() {
       <div className="flex justify-between px-6 py-3">
         <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white mb-1">
-            
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect width="20" height="12" x="2" y="6" rx="2"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
           </div>
           <span className="text-xs">Pay</span>
         </div>
         <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white mb-1">
-            
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+              <rect width="3" height="3" x="7" y="7"/>
+              <rect width="3" height="3" x="14" y="7"/>
+              <rect width="3" height="3" x="7" y="14"/>
+              <rect width="3" height="3" x="14" y="14"/>
+            </svg>
           </div>
           <span className="text-xs">QR payments</span>
         </div>
         <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white mb-1">
-            
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
           </div>
           <span className="text-xs">Transfer</span>
         </div>
         <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white mb-1">
-            
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="M12 4v16m-4-4l4 4 4-4"/>
+            </svg>
           </div>
           <span className="text-xs">CashSend</span>
         </div>

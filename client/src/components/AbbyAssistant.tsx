@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import { formatCurrency } from "@/lib/utils";
 import { UserWallet } from "@shared/schema";
+import absaAbbyLogo from "../assets/absa_abby_logo.png";
 
 interface Message {
   id: string;
@@ -226,14 +227,12 @@ export default function AbbyAssistant({ onClose }: { onClose: () => void }) {
         {/* Header */}
         <div className="p-4 border-b flex justify-between items-center bg-primary text-white rounded-t-2xl">
           <div className="flex items-center">
-            <div className="bg-white/20 w-10 h-10 rounded-full flex items-center justify-center mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                <path d="M12 8c-2.21 0-4 1.12-4 2.5s1.79 2.5 4 2.5c1.65 0 3 .67 3 1.5 0 .83-1.35 1.5-3 1.5a4.5 4.5 0 0 1-3.7-1.94"/>
-                <path d="M12 18v-1"/>
-                <path d="M12 6V2.5"/>
-                <path d="M7 15H4.94a.31.31 0 0 1-.14-.59A5 5 0 0 0 2 10c0-2.76 2.69-5 6-5"/>
-                <path d="M16 15h2.06a.31.31 0 0 0 .14-.59A5 5 0 0 1 20 10c0-2.76-2.69-5-6-5"/>
-              </svg>
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center mr-3">
+              <img 
+                src={absaAbbyLogo} 
+                alt="Absa Abby" 
+                className="w-full h-full object-cover" 
+              />
             </div>
             <div>
               <h3 className="font-semibold text-lg">Abby</h3>
@@ -256,14 +255,12 @@ export default function AbbyAssistant({ onClose }: { onClose: () => void }) {
               className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               {message.sender === 'assistant' && (
-                <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center mr-2 flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                    <path d="M12 8c-2.21 0-4 1.12-4 2.5s1.79 2.5 4 2.5c1.65 0 3 .67 3 1.5 0 .83-1.35 1.5-3 1.5a4.5 4.5 0 0 1-3.7-1.94"/>
-                    <path d="M12 18v-1"/>
-                    <path d="M12 6V2.5"/>
-                    <path d="M7 15H4.94a.31.31 0 0 1-.14-.59A5 5 0 0 0 2 10c0-2.76 2.69-5 6-5"/>
-                    <path d="M16 15h2.06a.31.31 0 0 0 .14-.59A5 5 0 0 1 20 10c0-2.76-2.69-5-6-5"/>
-                  </svg>
+                <div className="h-8 w-8 rounded-full overflow-hidden flex items-center justify-center mr-2 flex-shrink-0">
+                  <img 
+                    src={absaAbbyLogo} 
+                    alt="Absa Abby" 
+                    className="w-full h-full object-cover" 
+                  />
                 </div>
               )}
               <div 

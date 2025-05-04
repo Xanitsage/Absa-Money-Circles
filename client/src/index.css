@@ -74,15 +74,15 @@ body {
   --card-foreground: 0 0% 10%;
   --border: 350 20% 90%;
   --input: 350 20% 90%;
-  --primary: 350 100% 43%; /* Absa Red #DC0037 */
+  --primary: 344 100% 27%; /* Absa Red #8C0037 */
   --primary-foreground: 0 0% 100%;
-  --secondary: 350 30% 96%;
-  --secondary-foreground: 350 100% 43%;
-  --accent: 44 100% 50%; /* Absa Gold #FFA400 */
-  --accent-foreground: 0 0% 10%;
-  --destructive: 0 100% 45%;
+  --secondary: 344 100% 43%; /* Lighter Absa Red #DC0037 */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 344 100% 27%; /* Absa Red for accents */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --ring: 350 100% 43%;
+  --ring: 344 100% 27%;
   --radius: 0.5rem;
   --chart-1: 350 100% 43%;
   --chart-2: 44 100% 50%;

@@ -190,7 +190,7 @@ export default function AbsaAppHome() {
                 onClick={() => setLocation("/")}
               >
                 <div className="w-6 h-6 mr-3 bg-[#DC0037] rounded-full flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">M</span>
+                  <span className="text-white text-xs font-bold">A</span>
                 </div>
                 <span className="text-[#303030] font-medium">Money Circles</span>
               </button>

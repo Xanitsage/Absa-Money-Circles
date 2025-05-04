@@ -186,13 +186,13 @@ export default function AbsaAppHome() {
           <div className="flex-1 overflow-auto">
             <div className="py-1 px-4">
               <button 
-                className="flex items-center py-3 w-full"
+                className="flex items-center py-3 w-full border-b border-gray-100"
                 onClick={() => setLocation("/")}
               >
-                <svg className="h-5 w-5 mr-4 text-[#DC0037]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-6h2v2h-2zm0-8h2v6h-2z" fill="#DC0037"/>
-                </svg>
-                <span className="text-[#DC0037]">Money Circles</span>
+                <div className="w-6 h-6 mr-3 bg-[#DC0037] rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">M</span>
+                </div>
+                <span className="text-[#303030] font-medium">Money Circles</span>
               </button>
 
               <div className="flex items-center py-3">

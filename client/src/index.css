@@ -13,7 +13,7 @@
   --card-foreground: 20 14.3% 4.1%;
   --border: 20 5.9% 90%;
   --input: 20 5.9% 90%;
-  --primary: 354 97% 24%; /* Absa Red #77021E */
+  --primary: 350 100% 43%; /* Absa Red #DC0037 */
   --primary-foreground: 0 0% 100%;
   --secondary: 60 4.8% 95.9%;
   --secondary-foreground: 24 9.8% 10%;
@@ -21,9 +21,9 @@
   --accent-foreground: 24 9.8% 10%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 354 97% 24%;
+  --ring: 350 100% 43%;
   --radius: 0.75rem;
-  --chart-1: 354 97% 24%;
+  --chart-1: 350 100% 43%;
   --chart-2: 51 100% 50%;
   --chart-3: 120 60% 50%;
   --chart-4: 30 100% 50%;
@@ -41,7 +41,7 @@
   --card-foreground: 0 0% 98%;
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
-  --primary: 354 97% 24%; /* Absa Red #77021E */
+  --primary: 350 100% 43%; /* Absa Red #DC0037 */
   --primary-foreground: 0 0% 100%;
   --secondary: 240 3.7% 15.9%;
   --secondary-foreground: 0 0% 98%;
@@ -49,8 +49,8 @@
   --accent-foreground: 240 5.9% 10%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-  --ring: 354 97% 24%;
-  --chart-1: 354 97% 24%;
+  --ring: 350 100% 43%;
+  --chart-1: 350 100% 43%;
   --chart-2: 51 100% 50%;
   --chart-3: 120 60% 50%;
   --chart-4: 30 100% 50%;

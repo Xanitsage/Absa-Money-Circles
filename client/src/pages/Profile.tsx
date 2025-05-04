@@ -54,64 +54,7 @@ export default function Profile() {
         </div>
       </div>
       
-      {/* Wallet Card */}
-      <Card className="p-4 mb-6 bg-gradient-to-r from-primary to-red-700 text-white">
-        <div className="flex justify-between items-start">
-          <div>
-            <p className="text-sm opacity-80">Available Balance</p>
-            <h2 className="text-2xl font-bold">
-              {wallet ? formatCurrency(wallet.balance) : "Loading..."}
-            </h2>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M17 11V7a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v11a4 4 0 0 0 4 4h8"/>
-            <path d="M17 7v4h5a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.8a2 2 0 0 0-1.2.5"/>
-            <path d="M22 19h-9a2 2 0 0 0-2 2 2 2 0 0 0 2 2h9a2 2 0 0 0 2-2 2 2 0 0 0-2-2Z"/>
-            <path d="M11 15h6"/>
-          </svg>
-        </div>
-        <div className="mt-3 pt-3 border-t border-white/20 grid grid-cols-4 gap-2">
-            <button className="text-[10px] opacity-90 flex flex-col items-center">
-              <div className="h-8 w-8 flex items-center justify-center mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 5v14"/>
-                  <path d="M5 12h14"/>
-                </svg>
-              </div>
-              Add Money
-            </button>
-            <button className="text-[10px] opacity-90 flex flex-col items-center">
-              <div className="h-8 w-8 flex items-center justify-center mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12h-4"/>
-                  <path d="m10 18-3-3 3-3"/>
-                  <path d="M3 12h11"/>
-                  <path d="m14 6 3 3-3 3"/>
-                </svg>
-              </div>
-              Transfer
-            </button>
-            <button className="text-[10px] opacity-90 flex flex-col items-center">
-              <div className="h-8 w-8 flex items-center justify-center mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 9h18v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
-                  <path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/>
-                  <path d="M12 14v-3"/>
-                </svg>
-              </div>
-              Pay
-            </button>
-            <button className="text-[10px] opacity-90 flex flex-col items-center" onClick={() => setShowCardDetails(!showCardDetails)}>
-              <div className="h-8 w-8 flex items-center justify-center mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="20" height="14" x="2" y="5" rx="2"/>
-                  <line x1="2" x2="22" y1="10" y2="10"/>
-                </svg>
-              </div>
-              Cards
-            </button>
-        </div>
-      </Card>
+      
       
       {/* Card Details (Hidden by default) */}
       {showCardDetails && (

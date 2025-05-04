@@ -17,6 +17,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   wss.on('connection', (ws) => {
     let circleId: string | null = null;
 
+    ws.on('error', (error) => {
+      console.error('WebSocket error:', error);
+    });
+
     ws.on('message', (message) => {
       try {
         const data = JSON.parse(message.toString());

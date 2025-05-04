@@ -29,7 +29,8 @@ export default function CircleDetail() {
 
   // Calculate progress percentage
   const calculateProgress = (current: number, target: number) => {
-    return Math.round((current / target) * 100);
+    if (!current || !target || target === 0) return 0;
+    return Math.min(Math.round((current / target) * 100), 100);
   };
 
   // Check if we should show the celebration

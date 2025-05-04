@@ -19,10 +19,10 @@ export default function AbsaAppHome() {
       {/* User Info */}
       <div className="flex items-center p-4 pb-3">
         <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white font-bold mr-3">
-          AA
+          LM
         </div>
         <div className="flex-1">
-          <h2 className="font-medium">Andile Achebe</h2>
+          <h2 className="font-medium">Lindokuhle Msiza</h2>
           <p className="text-xs text-gray-600">Personal bank account</p>
         </div>
         <div className="text-gray-400">

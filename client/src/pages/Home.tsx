@@ -183,7 +183,12 @@ export default function Home() {
       <div className="mb-6">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-semibold text-lg">My Savings</h3>
-          <Link href="/savings" className="text-primary text-sm font-medium">See All</Link>
+          <Link href="/savings" className="text-primary text-sm font-medium flex items-center">
+            <span className="mr-1">See All ({savings?.length || 0})</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </Link>
         </div>
 
         {isLoadingSavings ? (

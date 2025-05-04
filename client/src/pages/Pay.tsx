@@ -277,20 +277,20 @@ export default function Pay() {
       {/* Payment Tabs */}
       <Tabs defaultValue={activeTab} value={activeTab} className="mb-6" onValueChange={setActiveTab}>
         <TabsList className="grid grid-cols-4 gap-3 p-1">
-          <TabsTrigger value="scan" className="flex items-center justify-center text-[10px] py-1 px-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <QrCodeIcon style={{ fontSize: '14px' }} className="mr-0.5" />
+          <TabsTrigger value="scan" className="flex items-center justify-center text-[9px] py-1 px-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <QrCodeIcon style={{ fontSize: '12px' }} className="mr-0.5" />
             <span className="whitespace-nowrap">Scan QR</span>
           </TabsTrigger>
-          <TabsTrigger value="phone" className="flex items-center justify-center text-[10px] py-1 px-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <PhoneAndroidIcon style={{ fontSize: '14px' }} className="mr-0.5" />
+          <TabsTrigger value="phone" className="flex items-center justify-center text-[9px] py-1 px-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <PhoneAndroidIcon style={{ fontSize: '12px' }} className="mr-0.5" />
             <span className="whitespace-nowrap">Pay Phone</span>
           </TabsTrigger>
-          <TabsTrigger value="request" className="flex items-center justify-center text-[10px] py-1 px-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <NotificationsIcon style={{ fontSize: '14px' }} className="mr-0.5" />
+          <TabsTrigger value="request" className="flex items-center justify-center text-[9px] py-1 px-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <NotificationsIcon style={{ fontSize: '12px' }} className="mr-0.5" />
             <span className="whitespace-nowrap">Request</span>
           </TabsTrigger>
-          <TabsTrigger value="merchant" className="flex items-center justify-center text-[10px] py-1 px-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <StorefrontIcon style={{ fontSize: '14px' }} className="mr-0.5" />
+          <TabsTrigger value="merchant" className="flex items-center justify-center text-[9px] py-1 px-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <StorefrontIcon style={{ fontSize: '12px' }} className="mr-0.5" />
             <span className="whitespace-nowrap">Merchant</span>
           </TabsTrigger>
         </TabsList>

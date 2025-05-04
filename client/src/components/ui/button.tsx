@@ -9,12 +9,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-[#DC0037] text-white hover:bg-[#B30027] active:bg-[#990027]",
-        secondary: "bg-white text-[#DC0037] border border-[#DC0037] hover:bg-[#B30027] hover:text-white active:bg-[#990027]",
-        tertiary: "bg-transparent text-[#DC0037] hover:bg-[#B30027] hover:text-white active:bg-[#990027]",
+        default: "bg-[#DC0037] text-white hover:bg-white hover:text-[#DC0037] hover:border hover:border-[#DC0037] active:bg-[#F5F5F5]",
+        secondary: "bg-white text-[#DC0037] border border-[#DC0037] hover:bg-[#DC0037] hover:text-white active:bg-[#B30027]",
+        tertiary: "bg-transparent text-[#DC0037] hover:bg-white hover:text-[#DC0037] hover:border hover:border-[#DC0037] active:bg-[#F5F5F5]",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        ghost: "hover:bg-[#B30027] hover:text-white",
+          "bg-destructive text-destructive-foreground hover:bg-white hover:text-destructive hover:border hover:border-destructive",
+        ghost: "hover:bg-white hover:text-[#DC0037] hover:border hover:border-[#DC0037]",
         link: "text-[#DC0037] underline-offset-4 hover:text-[#B30027]",
       },
       size: {

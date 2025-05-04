@@ -5,6 +5,7 @@ import { CircleDetails } from "@shared/schema";
 import { useQuery } from "@tanstack/react-query";
 import AbbyAssistant from "./AbbyAssistant";
 import { ThemeToggle } from "./theme-toggle";
+import absaLogo from "../assets/absa_logo.png";
 
 interface LayoutProps {
   children: ReactNode;
@@ -55,11 +56,11 @@ export default function Layout({ children }: LayoutProps) {
               </svg>
             </button>
           ) : (
-            <svg className="h-8 mr-2" viewBox="0 0 80 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 0H80V30H0V0Z" fill="#E30613"/>
-              <path d="M17.5 8H62.5V22H17.5V8Z" fill="white"/>
-              <path d="M20 10H60V20H20V10Z" fill="#E30613"/>
-            </svg>
+            <img 
+              src={absaLogo} 
+              alt="Absa Logo" 
+              className="h-8 mr-2" 
+            />
           )}
           <h1 className="font-semibold text-lg text-foreground">
             {circleTitle ? circleTitle : "MoneyCircles"}

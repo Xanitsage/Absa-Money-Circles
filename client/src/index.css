@@ -118,6 +118,14 @@ body {
   --chart-5: 240 100% 50%;
 }
 
+.bottom-nav {
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid hsl(var(--border));
+  background: white;
+}
+
 @layer base {
   * {
     @apply border-border;

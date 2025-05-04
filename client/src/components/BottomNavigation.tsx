@@ -32,43 +32,43 @@ export default function BottomNavigation() {
     <nav className="fixed bottom-0 left-0 right-0 bg-background border-t border-border px-4 py-2 flex justify-between items-center z-20 max-w-md mx-auto">
       <button 
         onClick={() => navigateTo("/")}
-        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/" ? "text-primary" : "text-muted-foreground"}`}
+        className={`flex flex-col items-center space-y-1 px-3 py-1 ${activeTab === "/" ? "text-primary" : "text-muted-foreground"}`}
       >
-        <HomeIcon />
-        <span className="text-xs mt-1">Home</span>
+        <HomeIcon className="h-6 w-6" />
+        <span className="text-[10px] mt-1">Home</span>
       </button>
-      
+
       <button 
         onClick={() => navigateTo("/circles")}
-        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/circles" ? "text-primary" : "text-muted-foreground"}`}
+        className={`flex flex-col items-center space-y-1 px-3 py-1 ${activeTab === "/circles" ? "text-primary" : "text-muted-foreground"}`}
       >
-        <PeopleIcon />
-        <span className="text-xs mt-1">Circles</span>
+        <PeopleIcon className="h-6 w-6" />
+        <span className="text-[10px] mt-1">Circles</span>
       </button>
-      
+
       <div className="relative -mt-5 z-10">
         <button 
           onClick={() => navigateTo("/create")}
           className="bg-primary text-white rounded-full p-3 shadow-lg"
         >
-          <AddIcon />
+          <AddIcon className="h-6 w-6"/>
         </button>
       </div>
-      
+
       <button 
         onClick={() => navigateTo("/pay")}
-        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/pay" ? "text-primary" : "text-muted-foreground"}`}
+        className={`flex flex-col items-center space-y-1 px-3 py-1 ${activeTab === "/pay" ? "text-primary" : "text-muted-foreground"}`}
       >
-        <PaymentsIcon />
-        <span className="text-xs mt-1">Pay</span>
+        <PaymentsIcon className="h-6 w-6" />
+        <span className="text-[10px] mt-1">Pay</span>
       </button>
-      
+
       <button 
         onClick={() => navigateTo("/profile")}
-        className={`flex flex-col items-center px-3 py-1 ${activeTab === "/profile" ? "text-primary" : "text-muted-foreground"}`}
+        className={`flex flex-col items-center space-y-1 px-3 py-1 ${activeTab === "/profile" ? "text-primary" : "text-muted-foreground"}`}
       >
-        <PersonIcon />
-        <span className="text-xs mt-1">Profile</span>
+        <PersonIcon className="h-6 w-6" />
+        <span className="text-[10px] mt-1">Profile</span>
       </button>
     </nav>
   );

@@ -104,7 +104,7 @@ export default function CircleDetail() {
           </div>
           <div className="flex justify-between text-sm">
             <span>{progress}% Complete</span>
-            <span>Deadline: {new Date(circle.targetDate).toLocaleDateString()}</span>
+            <span>Deadline: {circle.targetDate ? new Date(circle.targetDate).toLocaleDateString() : 'Not set'}</span>
           </div>
         </div>
       </div>

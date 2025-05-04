@@ -246,7 +246,7 @@ export default function Profile() {
           </svg>
           Sign Out
         </Button>
-        <p className="text-xs text-gray-500 mt-2">App Version 1.0.0</p>
+        
       </div>
     </div>
   );

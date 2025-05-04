@@ -91,7 +91,8 @@ export default function CreateCircle() {
                     <Input 
                       type="number" 
                       placeholder="0.00" 
-                      className="pl-7 text-left" 
+                      style={{ paddingLeft: "2rem" }}
+                      className="text-left" 
                       {...field}
                       onChange={(e) => field.onChange(parseFloat(e.target.value))}
                     />

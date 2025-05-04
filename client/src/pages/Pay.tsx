@@ -321,7 +321,8 @@ export default function Pay() {
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">R</span>
               <Input 
                 type="number" 
-                className="pl-7 text-left" 
+                style={{ paddingLeft: "2rem" }}
+                className="text-left" 
                 placeholder="0.00" 
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
@@ -372,7 +373,7 @@ export default function Pay() {
             <label className="block text-sm font-medium mb-1">Amount (ZAR)</label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">R</span>
-              <Input type="number" className="pl-7 text-left" placeholder="0.00" />
+              <Input type="number" style={{ paddingLeft: "2rem" }} className="text-left" placeholder="0.00" />
             </div>
           </div>
           
@@ -413,7 +414,8 @@ export default function Pay() {
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">R</span>
                   <Input 
                     type="number" 
-                    className="pl-7 text-left" 
+                    style={{ paddingLeft: "2rem" }}
+                    className="text-left" 
                     placeholder="0.00" 
                     value={merchantAmount}
                     onChange={(e) => setMerchantAmount(e.target.value)}

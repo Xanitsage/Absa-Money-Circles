@@ -34,7 +34,7 @@ export default function Layout({ children }: LayoutProps) {
   }, [circleDetails]);
 
   return (
-    <div className="max-w-md mx-auto bg-background min-h-screen relative pb-16">
+    <div className="bg-background min-h-screen relative pb-16">
       {/* Header */}
       <header className="bg-background px-4 py-3 flex justify-between items-center shadow-sm z-10 sticky top-0 border-b border-border h-14">
         <div className="flex items-center">
@@ -89,7 +89,7 @@ export default function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main>
+      <main className="flex-grow"> {/* Added flex-grow for better responsiveness */}
         {children}
       </main>
 

@@ -24,10 +24,12 @@
 
 body {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   min-height: 100vh;
-  padding: 0.5rem;
+  padding: 0;
+  margin: 0;
+  background-color: hsl(var(--background));
 }
 
 /* Adjust spacing for mobile layout */

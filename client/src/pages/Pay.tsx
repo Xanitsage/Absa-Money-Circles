@@ -277,21 +277,21 @@ export default function Pay() {
       {/* Payment Tabs */}
       <Tabs defaultValue={activeTab} value={activeTab} className="mb-6" onValueChange={setActiveTab}>
         <TabsList className="grid grid-cols-4 gap-3 p-1">
-          <TabsTrigger value="scan" className="flex items-center text-xs py-1.5">
+          <TabsTrigger value="scan" className="flex items-center justify-center text-xs py-1.5 px-2 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <QrCodeIcon style={{ fontSize: '16px' }} className="mr-1" />
-            <span>Scan QR</span>
+            <span className="whitespace-nowrap">Scan QR</span>
           </TabsTrigger>
-          <TabsTrigger value="phone" className="flex items-center justify-center gap-1 text-xs py-1.5 px-2 data-[state=active]:bg-background data-[state=active]:text-foreground">
-            <PhoneAndroidIcon style={{ fontSize: '16px' }} />
+          <TabsTrigger value="phone" className="flex items-center justify-center text-xs py-1.5 px-2 data-[state=active]:bg-background data-[state=active]:text-foreground">
+            <PhoneAndroidIcon style={{ fontSize: '16px' }} className="mr-1" />
             <span className="whitespace-nowrap">Pay Phone</span>
           </TabsTrigger>
-          <TabsTrigger value="request" className="flex items-center text-xs py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
+          <TabsTrigger value="request" className="flex items-center justify-center text-xs py-1.5 px-2 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <NotificationsIcon style={{ fontSize: '16px' }} className="mr-1" />
-            <span>Request</span>
+            <span className="whitespace-nowrap">Request</span>
           </TabsTrigger>
-          <TabsTrigger value="merchant" className="flex items-center text-xs py-1.5 data-[state=active]:bg-background data-[state=active]:text-foreground">
+          <TabsTrigger value="merchant" className="flex items-center justify-center text-xs py-1.5 px-2 data-[state=active]:bg-background data-[state=active]:text-foreground">
             <StorefrontIcon style={{ fontSize: '16px' }} className="mr-1" />
-            <span>Merchant</span>
+            <span className="whitespace-nowrap">Merchant</span>
           </TabsTrigger>
         </TabsList>
 

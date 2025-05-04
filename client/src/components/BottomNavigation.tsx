@@ -1,5 +1,11 @@
 import { useLocation } from "wouter";
 import { useState, useEffect } from "react";
+// Import Material Design icons
+import HomeIcon from '@mui/icons-material/Home';
+import PeopleIcon from '@mui/icons-material/People';
+import AddIcon from '@mui/icons-material/Add';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import PersonIcon from '@mui/icons-material/Person';
 
 export default function BottomNavigation() {
   const [location, setLocation] = useLocation();

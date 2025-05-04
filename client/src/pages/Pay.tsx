@@ -274,13 +274,7 @@ export default function Pay() {
           {!showQR ? (
             <div className="text-center p-6">
               <div className="bg-gray-100 rounded-xl p-10 mb-6 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
-                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
-                  <rect width="3" height="3" x="7" y="7"/>
-                  <rect width="3" height="3" x="14" y="7"/>
-                  <rect width="3" height="3" x="7" y="14"/>
-                  <rect width="3" height="3" x="14" y="14"/>
-                </svg>
+                <QrCodeIcon style={{ width: '100px', height: '100px' }} className="text-gray-400" />
               </div>
               <Button onClick={generateQRCode} size="lg" className="rounded-full">
                 <QrCode2Icon className="mr-2" />
@@ -298,21 +292,11 @@ export default function Pay() {
               </div>
               <div className="flex space-x-3">
                 <Button variant="outline" onClick={() => setShowQR(false)} className="flex-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/>
-                    <line x1="16" x2="22" y1="5" y2="5"/>
-                    <line x1="19" x2="19" y1="2" y2="8"/>
-                    <circle cx="9" cy="9" r="2"/>
-                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
-                  </svg>
+                  <RefreshIcon className="mr-1" />
                   New Code
                 </Button>
                 <Button className="flex-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                    <rect width="13" height="14" x="8" y="7" rx="2" ry="2"/>
-                    <path d="M8 7V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5"/>
-                    <path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3"/>
-                  </svg>
+                  <ShareIcon className="mr-1" />
                   Share Code
                 </Button>
               </div>
@@ -398,11 +382,7 @@ export default function Pay() {
           </div>
           
           <Button className="w-full rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-              <path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3Z"/>
-              <path d="M8 17v1a4 4 0 0 0 8 0v-1"/>
-              <path d="M11 9h2"/>
-            </svg>
+            <NotificationsIcon className="mr-2" />
             Request Money
           </Button>
         </TabsContent>
@@ -412,12 +392,7 @@ export default function Pay() {
             <>
               <div className="mb-6 text-center">
                 <div className="bg-gray-100 rounded-xl p-6 mb-4 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                  </svg>
+                  <PeopleIcon style={{ width: '80px', height: '80px' }} className="text-gray-400" />
                 </div>
                 <p className="text-lg font-medium">Merchant / Freelancer QR Code</p>
                 <p className="text-sm text-gray-500">Generate a QR code for your customers to pay you</p>
@@ -500,10 +475,7 @@ export default function Pay() {
         <div className="flex justify-between items-center py-2 border-b">
           <div className="flex items-center">
             <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                <rect width="20" height="14" x="2" y="5" rx="2"/>
-                <line x1="2" x2="22" y1="10" y2="10"/>
-              </svg>
+              <CreditCardIcon className="text-primary" />
             </div>
             <div>
               <p className="font-medium">Absa Gold Account</p>

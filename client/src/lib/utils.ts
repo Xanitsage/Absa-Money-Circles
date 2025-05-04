@@ -5,7 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatCurrency(amount: number): string {
+export function formatCurrency(amount: number | undefined): string {
+  // Handle NaN, undefined, or null values to prevent displaying RNaN
+  if (amount === undefined || amount === null || isNaN(amount)) {
+    return "R0.00";
+  }
   return new Intl.NumberFormat("en-ZA", {
     style: "currency",
     currency: "ZAR",

@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Confetti from "@/components/ui/confetti";
+import { formatCurrency } from "@/lib/utils";
 
 export default function CircleDetail() {
   const { id } = useParams();
@@ -24,14 +25,7 @@ export default function CircleDetail() {
     queryKey: ['/api/circles', id, 'members']
   });
 
-  // Format currency
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-ZA', { 
-      style: 'currency', 
-      currency: 'ZAR',
-      minimumFractionDigits: 2
-    }).format(amount);
-  };
+  // Using the global formatCurrency function from utils.ts
 
   // Calculate progress percentage
   const calculateProgress = (current: number, target: number) => {
@@ -192,7 +186,7 @@ export default function CircleDetail() {
                       </div>
                       <p className="text-sm">
                         {activity.type === 'contribution' 
-                          ? <>Added <span className="font-medium">{formatCurrency(activity.amount)}</span> to the circle</>
+                          ? <>Added <span className="font-medium">{formatCurrency(activity.amount || 0)}</span> to the circle</>
                           : <>Circle reached <span className="font-medium">{activity.milestone}%</span> of the goal!</>
                         }
                       </p>

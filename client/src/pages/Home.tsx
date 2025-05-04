@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { formatCurrency } from "@/lib/utils";
 
 export default function Home() {
   const [showAddMoneyModal, setShowAddMoneyModal] = useState(false);
@@ -32,14 +33,7 @@ export default function Home() {
     queryKey: ['/api/circles']
   });
 
-  // Format currency
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-ZA', { 
-      style: 'currency', 
-      currency: 'ZAR',
-      minimumFractionDigits: 2
-    }).format(amount);
-  };
+  // Using the global formatCurrency function from utils.ts
 
   // Calculate progress percentage
   const calculateProgress = (current: number, target: number) => {

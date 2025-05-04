@@ -127,7 +127,7 @@ export default function AbsaAppHome() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="border-t flex justify-between px-4 py-2 bg-white">
+      <div className="fixed bottom-0 left-0 right-0 border-t flex justify-between px-4 py-2 bg-white max-w-md mx-auto">
         <div className="flex flex-col items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#DC0037]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>

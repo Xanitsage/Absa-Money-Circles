@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+#root {
+  width: 360px;
+  height: 964px;
+  margin: 0 auto;
+  overflow: auto;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
 :root {
   --background: 0 0% 100%;
   --foreground: 20 14.3% 4.1%;

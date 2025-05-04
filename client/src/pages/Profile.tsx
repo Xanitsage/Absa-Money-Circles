@@ -73,36 +73,37 @@ export default function Profile() {
         <div className="mt-3 pt-3 border-t border-white/20 grid grid-cols-4 gap-2">
             <button className="text-[10px] opacity-90 flex flex-col items-center">
               <div className="h-8 w-8 flex items-center justify-center mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20v-8" />
-                  <path d="M18 12l-6-6-6 6" />
-                  <path d="M4 16h16" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 5v14"/>
+                  <path d="M5 12h14"/>
                 </svg>
               </div>
               Add Money
             </button>
             <button className="text-[10px] opacity-90 flex flex-col items-center">
               <div className="h-8 w-8 flex items-center justify-center mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" x2="12" y1="4" y2="20"/>
-                  <polyline points="6 10 12 4 18 10"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12h-4"/>
+                  <path d="m10 18-3-3 3-3"/>
+                  <path d="M3 12h11"/>
+                  <path d="m14 6 3 3-3 3"/>
                 </svg>
               </div>
               Transfer
             </button>
             <button className="text-[10px] opacity-90 flex flex-col items-center">
               <div className="h-8 w-8 flex items-center justify-center mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 11V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v5"/>
-                  <path d="M5 11h14"/>
-                  <path d="M5 11v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 9h18v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
+                  <path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/>
+                  <path d="M12 14v-3"/>
                 </svg>
               </div>
               Pay
             </button>
             <button className="text-[10px] opacity-90 flex flex-col items-center" onClick={() => setShowCardDetails(!showCardDetails)}>
               <div className="h-8 w-8 flex items-center justify-center mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="20" height="14" x="2" y="5" rx="2"/>
                   <line x1="2" x2="22" y1="10" y2="10"/>
                 </svg>

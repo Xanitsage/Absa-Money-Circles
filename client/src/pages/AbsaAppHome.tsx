@@ -74,7 +74,13 @@ export default function AbsaAppHome() {
 
       {/* Account Cards */}
       <div className="px-4 py-3 flex-1 space-y-3">
-        <div className="bg-[#DC0037] rounded-lg p-4 text-white">
+        <div className="bg-[#DC0037] rounded-lg p-4 text-white relative">
+          <div className="absolute top-0 right-0 h-16 w-16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-20">
+              <rect width="20" height="14" x="2" y="5" rx="2"/>
+              <line x1="2" x2="22" y1="10" y2="10"/>
+            </svg>
+          </div>
           <div className="flex justify-between items-start">
             <div>
               <p className="text-base font-medium">Cheque Account</p>
@@ -87,7 +93,13 @@ export default function AbsaAppHome() {
           </div>
         </div>
 
-        <div className="bg-[#DC0037] rounded-lg p-4 text-white">
+        <div className="bg-[#DC0037] rounded-lg p-4 text-white relative">
+          <div className="absolute top-0 right-0 h-16 w-16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-20">
+              <rect width="20" height="14" x="2" y="5" rx="2"/>
+              <line x1="2" x2="22" y1="10" y2="10"/>
+            </svg>
+          </div>
           <div className="flex justify-between items-start">
             <div>
               <p className="text-base font-medium">Credit Account</p>
@@ -98,7 +110,7 @@ export default function AbsaAppHome() {
               <p className="text-xs opacity-80 mt-1">Current balance</p>
             </div>
           </div>
-        </div>
+        </div>v>
 
         <div className="bg-[#DC0037] rounded-lg p-4 text-white">
           <div className="flex justify-between items-start">

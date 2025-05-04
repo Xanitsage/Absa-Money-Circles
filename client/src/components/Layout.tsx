@@ -16,15 +16,15 @@ export default function Layout({ children }: LayoutProps) {
   const [location, setLocation] = useLocation();
   const [circleTitle, setCircleTitle] = useState<string>("");
   const [showAbby, setShowAbby] = useState(false);
-  
+
   // Get circle details for header if we're on a circle detail page
   const circleId = location.startsWith("/circle/") ? location.split("/")[2] : null;
-  
+
   const { data: circleDetails } = useQuery<CircleDetails>({
     queryKey: ['/api/circles', circleId],
     enabled: !!circleId
   });
-  
+
   useEffect(() => {
     if (circleDetails) {
       setCircleTitle(circleDetails.name);
@@ -67,7 +67,7 @@ export default function Layout({ children }: LayoutProps) {
           <ThemeToggle />
           <button 
             onClick={() => setLocation('/notifications')} 
-            className="rounded-full p-2 bg-secondary text-foreground hover:bg-muted"
+            className="rounded-full p-2 text-foreground transition-colors hover:bg-secondary"
             aria-label="Notifications"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -77,7 +77,7 @@ export default function Layout({ children }: LayoutProps) {
           </button>
           <button 
             onClick={() => setLocation('/profile')} 
-            className="rounded-full p-2 bg-secondary text-foreground hover:bg-muted"
+            className="rounded-full p-2 text-foreground transition-colors hover:bg-secondary"
             aria-label="Profile"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

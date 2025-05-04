@@ -110,7 +110,7 @@ export default function AbsaAppHome() {
               <p className="text-xs opacity-80 mt-1">Current balance</p>
             </div>
           </div>
-        </div>v>
+        </div>
 
         <div className="bg-[#DC0037] rounded-lg p-4 text-white">
           <div className="flex justify-between items-start">

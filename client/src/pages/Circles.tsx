@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { apiRequest } from "@/lib/queryClient";
 import { MoneyCircle } from "@shared/schema";
+import { formatCurrency } from "@/lib/utils";
 
 export default function Circles() {
   const [, setLocation] = useLocation();
@@ -17,18 +18,7 @@ export default function Circles() {
     queryKey: ['/api/circles']
   });
 
-  // Format currency
-  const formatCurrency = (amount: number) => {
-    // Handle NaN or undefined values to prevent displaying RNaN
-    if (isNaN(amount) || amount === undefined) {
-      return "R0.00";
-    }
-    return new Intl.NumberFormat('en-ZA', { 
-      style: 'currency', 
-      currency: 'ZAR',
-      minimumFractionDigits: 2
-    }).format(amount);
-  };
+  // Using the global formatCurrency function from utils.ts
 
   // Calculate progress percentage
   const calculateProgress = (current: number, target: number) => {

@@ -90,12 +90,10 @@ export default function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow pb-16"> {/* Removed overflow since ScrollArea handles it */}
-        <ScrollArea className="h-[calc(100vh-8rem)]"> {/* Height calculation accounts for header and bottom nav */}
-          <div className="px-4">
-            {children}
-          </div>
-        </ScrollArea>
+      <main className="flex-grow pb-16">
+        <div className="px-4">
+          {children}
+        </div>
       </main>
 
       {/* Bottom Navigation */}

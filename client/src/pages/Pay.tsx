@@ -7,6 +7,19 @@ import { useQuery } from "@tanstack/react-query";
 import { UserWallet } from "@shared/schema";
 import { formatCurrency } from "@/lib/utils";
 
+// Material Design Icons
+import QrCodeIcon from '@mui/icons-material/QrCode';
+import QrCode2Icon from '@mui/icons-material/QrCode2';
+import AddIcon from '@mui/icons-material/Add';
+import SendIcon from '@mui/icons-material/Send';
+import ShareIcon from '@mui/icons-material/Share';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import PeopleIcon from '@mui/icons-material/People';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+
 export default function Pay() {
   // Get tab parameter from URL if available
   const urlParams = new URLSearchParams(window.location.search);
@@ -239,10 +252,22 @@ export default function Pay() {
       {/* Payment Tabs */}
       <Tabs defaultValue={activeTab} value={activeTab} className="mb-6" onValueChange={setActiveTab}>
         <TabsList className="grid grid-cols-4">
-          <TabsTrigger value="scan">Scan QR</TabsTrigger>
-          <TabsTrigger value="phone">Pay Phone</TabsTrigger>
-          <TabsTrigger value="request">Request</TabsTrigger>
-          <TabsTrigger value="merchant">Merchant</TabsTrigger>
+          <TabsTrigger value="scan" className="flex items-center space-x-1">
+            <QrCodeIcon fontSize="small" />
+            <span>Scan QR</span>
+          </TabsTrigger>
+          <TabsTrigger value="phone" className="flex items-center space-x-1">
+            <PhoneAndroidIcon fontSize="small" />
+            <span>Pay Phone</span>
+          </TabsTrigger>
+          <TabsTrigger value="request" className="flex items-center space-x-1">
+            <NotificationsIcon fontSize="small" />
+            <span>Request</span>
+          </TabsTrigger>
+          <TabsTrigger value="merchant" className="flex items-center space-x-1">
+            <StorefrontIcon fontSize="small" />
+            <span>Merchant</span>
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="scan" className="mt-4">
@@ -258,13 +283,7 @@ export default function Pay() {
                 </svg>
               </div>
               <Button onClick={generateQRCode} size="lg" className="rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
-                  <rect width="3" height="3" x="7" y="7"/>
-                  <rect width="3" height="3" x="14" y="7"/>
-                  <rect width="3" height="3" x="7" y="14"/>
-                  <rect width="3" height="3" x="14" y="14"/>
-                </svg>
+                <QrCode2Icon className="mr-2" />
                 Generate Payment QR
               </Button>
             </div>
@@ -340,10 +359,7 @@ export default function Pay() {
             disabled={!phoneNumber || !amount}
             className="w-full rounded-full"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-              <line x1="22" x2="11" y1="2" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
+            <SendIcon className="mr-2" />
             Send Money
           </Button>
           
@@ -444,13 +460,7 @@ export default function Pay() {
                 disabled={!businessName || !merchantAmount}
                 className="w-full rounded-full"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
-                  <rect width="3" height="3" x="7" y="7"/>
-                  <rect width="3" height="3" x="14" y="7"/>
-                  <rect width="3" height="3" x="7" y="14"/>
-                  <rect width="3" height="3" x="14" y="14"/>
-                </svg>
+                <QrCode2Icon className="mr-2" />
                 Generate Payment QR
               </Button>
             </>
@@ -471,21 +481,11 @@ export default function Pay() {
               </div>
               <div className="flex space-x-3">
                 <Button variant="outline" onClick={() => setMerchantQRVisible(false)} className="flex-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/>
-                    <line x1="16" x2="22" y1="5" y2="5"/>
-                    <line x1="19" x2="19" y1="2" y2="8"/>
-                    <circle cx="9" cy="9" r="2"/>
-                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
-                  </svg>
+                  <RefreshIcon className="mr-1" />
                   New Code
                 </Button>
                 <Button className="flex-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                    <rect width="13" height="14" x="8" y="7" rx="2" ry="2"/>
-                    <path d="M8 7V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5"/>
-                    <path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3"/>
-                  </svg>
+                  <ShareIcon className="mr-1" />
                   Share Code
                 </Button>
               </div>
@@ -514,10 +514,7 @@ export default function Pay() {
         </div>
         <div className="flex justify-between items-center py-3">
           <Button variant="outline" size="sm" className="w-full">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-              <path d="M12 5v14"/>
-              <path d="M5 12h14"/>
-            </svg>
+            <AddIcon className="mr-1" />
             Add Payment Method
           </Button>
         </div>

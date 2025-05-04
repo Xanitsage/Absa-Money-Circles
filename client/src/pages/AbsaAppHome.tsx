@@ -35,38 +35,25 @@ export default function AbsaAppHome() {
       <div className="flex justify-between px-6 py-3">
         <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white mb-1">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect width="20" height="12" x="2" y="6" rx="2"/>
-              <circle cx="12" cy="12" r="2"/>
-              <path d="M6 12h.01M18 12h.01"/>
-            </svg>
+            
           </div>
           <span className="text-xs">Pay</span>
         </div>
         <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white mb-1">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-              <rect x="9" y="3" width="6" height="6" rx="1"/>
-            </svg>
+            
           </div>
           <span className="text-xs">QR payments</span>
         </div>
         <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white mb-1">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-            </svg>
+            
           </div>
           <span className="text-xs">Transfer</span>
         </div>
         <div className="flex flex-col items-center">
           <div className="h-12 w-12 bg-[#DC0037] rounded-full flex items-center justify-center text-white mb-1">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect width="20" height="14" x="2" y="5" rx="2"/>
-              <line x1="2" x2="22" y1="10" y2="10"/>
-            </svg>
+            
           </div>
           <span className="text-xs">CashSend</span>
         </div>
@@ -76,10 +63,7 @@ export default function AbsaAppHome() {
       <div className="px-4 py-3 flex-1 space-y-3">
         <div className="bg-[#DC0037] rounded-lg p-4 text-white relative">
           <div className="absolute top-0 right-0 h-16 w-16">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-20">
-              <rect width="20" height="14" x="2" y="5" rx="2"/>
-              <line x1="2" x2="22" y1="10" y2="10"/>
-            </svg>
+            
           </div>
           <div className="flex justify-between items-start">
             <div>
@@ -95,10 +79,7 @@ export default function AbsaAppHome() {
 
         <div className="bg-[#DC0037] rounded-lg p-4 text-white relative">
           <div className="absolute top-0 right-0 h-16 w-16">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-20">
-              <rect width="20" height="14" x="2" y="5" rx="2"/>
-              <line x1="2" x2="22" y1="10" y2="10"/>
-            </svg>
+            
           </div>
           <div className="flex justify-between items-start">
             <div>

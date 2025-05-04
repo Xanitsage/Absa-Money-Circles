@@ -62,7 +62,7 @@ export const createCircleSchema = z.object({
   targetDate: z.string().refine(date => new Date(date) > new Date(), {
     message: "Target date must be in the future",
   }),
-  contributionFrequency: z.enum(["weekly", "bi-weekly", "monthly"]),
+  contributionFrequency: z.enum(["weekly", "monthly", "yearly"]),
   autoSave: z.boolean().default(true),
   celebrateMilestones: z.boolean().default(true),
 });

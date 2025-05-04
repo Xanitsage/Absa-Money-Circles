@@ -20,7 +20,7 @@ import {
 
 export default function CreateCircle() {
   const [, setLocation] = useLocation();
-  const [contributionFrequency, setContributionFrequency] = useState<string>("weekly");
+  const [contributionFrequency, setContributionFrequency] = useState<"weekly" | "monthly" | "yearly">("weekly");
   
   // Set up form with validation
   const form = useForm<CreateCircleData>({
@@ -51,7 +51,7 @@ export default function CreateCircle() {
   const onSubmit = (data: CreateCircleData) => {
     const fullData = {
       ...data,
-      contributionFrequency,
+      contributionFrequency, // Will be one of: "weekly", "monthly", or "yearly"
     };
     createCircle(fullData);
   };
@@ -129,19 +129,19 @@ export default function CreateCircle() {
               </Button>
               <Button
                 type="button"
-                variant={contributionFrequency === "bi-weekly" ? "default" : "outline"}
-                className={contributionFrequency === "bi-weekly" ? "bg-primary/10 text-primary" : ""}
-                onClick={() => setContributionFrequency("bi-weekly")}
-              >
-                Bi-weekly
-              </Button>
-              <Button
-                type="button"
                 variant={contributionFrequency === "monthly" ? "default" : "outline"}
                 className={contributionFrequency === "monthly" ? "bg-primary/10 text-primary" : ""}
                 onClick={() => setContributionFrequency("monthly")}
               >
                 Monthly
+              </Button>
+              <Button
+                type="button"
+                variant={contributionFrequency === "yearly" ? "default" : "outline"}
+                className={contributionFrequency === "yearly" ? "bg-primary/10 text-primary" : ""}
+                onClick={() => setContributionFrequency("yearly")}
+              >
+                Yearly
               </Button>
             </div>
           </div>

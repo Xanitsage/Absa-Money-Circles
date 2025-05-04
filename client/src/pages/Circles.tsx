@@ -19,6 +19,10 @@ export default function Circles() {
 
   // Format currency
   const formatCurrency = (amount: number) => {
+    // Handle NaN or undefined values to prevent displaying RNaN
+    if (isNaN(amount) || amount === undefined) {
+      return "R0.00";
+    }
     return new Intl.NumberFormat('en-ZA', { 
       style: 'currency', 
       currency: 'ZAR',

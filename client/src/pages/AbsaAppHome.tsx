@@ -211,13 +211,6 @@ export default function AbsaAppHome() {
 
               <div className="flex items-center py-3">
                 <svg className="h-5 w-5 mr-4 text-gray-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h2v2H7V7zm0 4h2v2H7v-2zm0 4h2v2H7v-2zm10 2h-6v-2h6v2zm0-4h-6v-2h6v2zm0-4h-6V7h6v2z" fill="currentColor"/>
-                </svg>
-                <span className="text-gray-800">PayShap</span>
-              </div>
-
-              <div className="flex items-center py-3">
-                <svg className="h-5 w-5 mr-4 text-gray-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9.01 14H2v2h7.01v3L13 15l-3.99-4v3zm5.98-1v-3H22V8h-7.01V5L11 9l3.99 4z" fill="currentColor"/>
                 </svg>
                 <span className="text-gray-800">Move salary and debit orders</span>

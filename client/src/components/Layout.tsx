@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import AbbyAssistant from "./AbbyAssistant";
 import { ThemeToggle } from "./theme-toggle";
 import absaLogo from "../assets/absa_logo.png";
+import absaAbbyLogo from "../assets/absa_abby_logo.png";
 
 interface LayoutProps {
   children: ReactNode;
@@ -94,16 +95,14 @@ export default function Layout({ children }: LayoutProps) {
       {/* Abby Assistant Button */}
       <div className="fixed bottom-20 right-4 z-10">
         <button 
-          className="bg-primary text-white rounded-full p-3 shadow-lg flex items-center justify-center"
+          className="flex items-center justify-center shadow-lg"
           onClick={() => setShowAbby(true)}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 8c-2.21 0-4 1.12-4 2.5s1.79 2.5 4 2.5c1.65 0 3 .67 3 1.5 0 .83-1.35 1.5-3 1.5a4.5 4.5 0 0 1-3.7-1.94"/>
-            <path d="M12 18v-1"/>
-            <path d="M12 6V2.5"/>
-            <path d="M7 15H4.94a.31.31 0 0 1-.14-.59A5 5 0 0 0 2 10c0-2.76 2.69-5 6-5"/>
-            <path d="M16 15h2.06a.31.31 0 0 0 .14-.59A5 5 0 0 1 20 10c0-2.76-2.69-5-6-5"/>
-          </svg>
+          <img 
+            src={absaAbbyLogo} 
+            alt="Absa Abby" 
+            className="h-12 w-12" 
+          />
         </button>
       </div>
 

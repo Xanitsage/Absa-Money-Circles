@@ -89,8 +89,10 @@ export default function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow"> {/* Added flex-grow for better responsiveness */}
-        {children}
+      <main className="flex-grow overflow-y-auto pb-16"> {/* Added overflow and padding */}
+        <div className="h-full">
+          {children}
+        </div>
       </main>
 
       {/* Bottom Navigation */}

@@ -16,7 +16,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CasinoIcon from '@mui/icons-material/Casino';
 
 export default function Profile() {
-  const [darkMode, setDarkMode] = useState(false);
+  
   const [notifications, setNotifications] = useState(true);
   const [autoSave, setAutoSave] = useState(false);
   const [showCardDetails, setShowCardDetails] = useState(false);
@@ -147,24 +147,7 @@ export default function Profile() {
         <h3 className="font-semibold mb-4">Settings</h3>
 
         <div className="space-y-3">
-          <div className="flex justify-between items-center py-2">
-            <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
-                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
-                <path d="M12 8a2.82 2.82 0 1 0 4 4"></path>
-                <path d="M12 2v2"></path>
-                <path d="M12 20v2"></path>
-                <path d="m4.93 4.93 1.41 1.41"></path>
-                <path d="m17.66 17.66 1.41 1.41"></path>
-                <path d="M2 12h2"></path>
-                <path d="M20 12h2"></path>
-                <path d="m6.34 17.66-1.41 1.41"></path>
-                <path d="m19.07 4.93-1.41 1.41"></path>
-              </svg>
-              <span>Dark Mode</span>
-            </div>
-            <Switch checked={darkMode} onCheckedChange={setDarkMode} />
-          </div>
+          
 
           <div className="flex justify-between items-center py-2">
             <div className="flex items-center">

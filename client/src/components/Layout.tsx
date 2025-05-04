@@ -64,7 +64,7 @@ export default function Layout({ children }: LayoutProps) {
             />
           )}
           <h1 className="font-semibold text-lg text-foreground">
-            {circleTitle ? circleTitle : "MoneyCircles"}
+            {circleTitle ? circleTitle : "Money Circles"}
           </h1>
         </div>
         <div className="flex items-center space-x-2">

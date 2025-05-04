@@ -87,7 +87,7 @@ export default function CreateCircle() {
                 <FormLabel>Savings Goal</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <span className="absolute left-4 top-3 text-gray-500">R</span>
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">R</span>
                     <Input 
                       type="number" 
                       placeholder="0.00" 

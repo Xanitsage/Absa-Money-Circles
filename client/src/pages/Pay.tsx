@@ -19,6 +19,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import PeopleIcon from '@mui/icons-material/People';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
+import DevicesIcon from '@mui/icons-material/Devices';
+import InfoIcon from '@mui/icons-material/Info';
 
 export default function Pay() {
   // Get tab parameter from URL if available
@@ -391,12 +393,33 @@ export default function Pay() {
         <TabsContent value="merchant" className="mt-4 space-y-4">
           {!merchantQRVisible ? (
             <>
-              <div className="mb-6 text-center">
-                <div className="bg-gray-100 rounded-xl p-6 mb-4 flex items-center justify-center">
-                  <PeopleIcon style={{ width: '80px', height: '80px' }} className="text-gray-400" />
+              <div className="flex mb-6 space-x-2">
+                <div className="flex-1 text-center">
+                  <div className="bg-gray-100 rounded-xl p-6 mb-4 flex items-center justify-center">
+                    <QrCode2Icon style={{ width: '50px', height: '50px' }} className="text-gray-400" />
+                  </div>
+                  <p className="text-base font-medium">QR Code Payment</p>
+                  <p className="text-xs text-gray-500">Generate a QR code for contactless payments</p>
                 </div>
-                <p className="text-lg font-medium">Merchant / Freelancer QR Code</p>
-                <p className="text-sm text-gray-500">Generate a QR code for your customers to pay you</p>
+                <div className="flex-1 text-center">
+                  <div className="bg-gray-100 rounded-xl p-6 mb-4 flex items-center justify-center">
+                    <DevicesIcon style={{ width: '50px', height: '50px' }} className="text-gray-400" />
+                  </div>
+                  <p className="text-base font-medium">Tap on Phone</p>
+                  <p className="text-xs text-gray-500">Accept contactless card payments</p>
+                </div>
+              </div>
+              
+              <div className="bg-blue-50 rounded-lg p-4 mb-6">
+                <h4 className="font-medium text-primary flex items-center mb-2">
+                  <InfoIcon className="mr-2" style={{ width: '18px', height: '18px' }} />
+                  How Tap on Phone Works
+                </h4>
+                <p className="text-sm text-gray-700">
+                  Tap on Phone allows businesses to accept payments from any contactless card or mobile wallet right from their 
+                  NFC-enabled device. With no extra hardware required, businesses can take advantage of this on-the-go solution 
+                  to enable quick and convenient payment options.
+                </p>
               </div>
             
               <div className="mb-4">

@@ -140,50 +140,71 @@ export default function Pay() {
     const paymentDataString = JSON.stringify(paymentData);
     
     // In a real app, this would generate a proper QR code from the data
-    // For now, we'll create a SVG representation that contains visual elements
-    // that make it look like a QR code, but also embed the actual payment data
+    // For now, we'll create a more basic QR code representation
     
-    // Create SVG QR code with embedded payment data
-    const qrCodeSvg = `data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-      <rect width="200" height="200" fill="white" />
-      <g fill="black">
-        <!-- QR Code pattern (simplified version) -->
-        <!-- Position detection patterns (corners) -->
-        <!-- Top-left corner -->
-        <rect x="20" y="20" width="30" height="30" />
-        <rect x="25" y="25" width="20" height="20" fill="white" />
-        <rect x="30" y="30" width="10" height="10" />
-        
-        <!-- Top-right corner -->
-        <rect x="150" y="20" width="30" height="30" />
-        <rect x="155" y="25" width="20" height="20" fill="white" />
-        <rect x="160" y="30" width="10" height="10" />
-        
-        <!-- Bottom-left corner -->
-        <rect x="20" y="150" width="30" height="30" />
-        <rect x="25" y="155" width="20" height="20" fill="white" />
-        <rect x="30" y="160" width="10" height="10" />
-        
-        <!-- Timing patterns -->
-        <rect x="60" y="20" width="80" height="10" />
-        <rect x="20" y="60" width="10" height="80" />
-        
-        <!-- Data modules (simulated) -->
-        ${Array(40).fill(0).map(() => {
-          const x = 30 + Math.floor(Math.random() * 14) * 10;
-          const y = 60 + Math.floor(Math.random() * 9) * 10;
-          return `<rect x="${x}" y="${y}" width="10" height="10" />`;
-        }).join('')}
-        
-        <!-- ABSA Logo overlay (simulated) -->
-        <circle cx="100" cy="100" r="20" fill="white" />
-        <circle cx="100" cy="100" r="18" fill="#DC0037" />
-        <text x="100" y="105" font-family="Arial" font-size="16" fill="white" text-anchor="middle">A</text>
+    // Create a simpler, more reliable QR code image
+    const qrCodeSvg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+        <rect width="200" height="200" fill="white" />
+        <!-- QR Code (simplified) -->
+        <g stroke="none" fill="black">
+          <!-- Position Detection Pattern - Top Left -->
+          <rect x="20" y="20" width="40" height="40" />
+          <rect x="25" y="25" width="30" height="30" fill="white" />
+          <rect x="30" y="30" width="20" height="20" />
+          
+          <!-- Position Detection Pattern - Top Right -->
+          <rect x="140" y="20" width="40" height="40" />
+          <rect x="145" y="25" width="30" height="30" fill="white" />
+          <rect x="150" y="30" width="20" height="20" />
+          
+          <!-- Position Detection Pattern - Bottom Left -->
+          <rect x="20" y="140" width="40" height="40" />
+          <rect x="25" y="145" width="30" height="30" fill="white" />
+          <rect x="30" y="150" width="20" height="20" />
+          
+          <!-- Data Cells (Grid pattern) -->
+          <rect x="70" y="20" width="10" height="10" />
+          <rect x="90" y="20" width="10" height="10" />
+          <rect x="110" y="20" width="10" height="10" />
+          <rect x="20" y="70" width="10" height="10" />
+          <rect x="40" y="70" width="10" height="10" />
+          <rect x="60" y="70" width="10" height="10" />
+          <rect x="80" y="70" width="10" height="10" />
+          <rect x="120" y="70" width="10" height="10" />
+          <rect x="150" y="70" width="10" height="10" />
+          <rect x="170" y="70" width="10" height="10" />
+          <rect x="30" y="90" width="10" height="10" />
+          <rect x="50" y="90" width="10" height="10" />
+          <rect x="90" y="90" width="10" height="10" />
+          <rect x="130" y="90" width="10" height="10" />
+          <rect x="150" y="90" width="10" height="10" />
+          <rect x="20" y="110" width="10" height="10" />
+          <rect x="60" y="110" width="10" height="10" />
+          <rect x="100" y="110" width="10" height="10" />
+          <rect x="140" y="110" width="10" height="10" />
+          <rect x="40" y="130" width="10" height="10" />
+          <rect x="80" y="130" width="10" height="10" />
+          <rect x="120" y="130" width="10" height="10" />
+          <rect x="160" y="130" width="10" height="10" />
+          <rect x="70" y="150" width="10" height="10" />
+          <rect x="110" y="150" width="10" height="10" />
+          <rect x="150" y="150" width="10" height="10" />
+          <rect x="20" y="170" width="10" height="10" />
+          <rect x="60" y="170" width="10" height="10" />
+          <rect x="100" y="170" width="10" height="10" />
+          <rect x="140" y="170" width="10" height="10" />
+          
+          <!-- ABSA Logo (Center) -->
+          <circle cx="100" cy="100" r="25" fill="white" />
+          <circle cx="100" cy="100" r="22" fill="#DC0037" />
+          <text x="100" y="107" font-family="Arial" font-size="22" fill="white" font-weight="bold" text-anchor="middle">A</text>
+        </g>
         
         <!-- Hidden payment data -->
         <text x="0" y="0" font-size="0.1" style="display:none">${encodeURIComponent(paymentDataString)}</text>
-      </g>
-    </svg>`;
+      </svg>
+    `;
     
     setMerchantQR(qrCodeSvg);
     setMerchantQRVisible(true);
@@ -486,7 +507,7 @@ export default function Pay() {
           ) : (
             <div className="text-center p-6">
               <div className="bg-white rounded-xl p-6 mb-6 flex items-center justify-center border border-gray-200 cursor-pointer relative" onClick={simulateQRScan}>
-                <img src={merchantQR || ""} alt="Merchant QR Code" className="w-48 h-48" />
+                <div dangerouslySetInnerHTML={{ __html: merchantQR }} className="w-48 h-48" />
                 <div className="absolute bottom-2 right-2 text-xs bg-primary/10 text-primary rounded-md px-2 py-1">Tap to Test</div>
               </div>
               <div className="mb-4">

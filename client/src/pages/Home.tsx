@@ -131,7 +131,18 @@ export default function Home() {
       </Card>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-4 gap-4 mb-6">
+          <Link href="/pay" className="has-icon">
+            <Card className="flex items-center justify-center py-3">
+              <div className="card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" x2="11" y1="2" y2="13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              </div>
+              <span className="text-xs">Send</span>
+            </Card>
+          </Link>
           <Link href="/pay" className="has-icon">
             <Card className="flex items-center justify-center py-3">
               <div className="card-icon">

@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
+import SavingsIcon from '@mui/icons-material/Savings';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import QuizIcon from '@mui/icons-material/Quiz';
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import ProgressCircle from "@/components/ui/progress-circle";
@@ -107,15 +110,21 @@ export default function Home() {
         </div>
         <div className="mt-4 flex space-x-2">
           <div className="flex-1 bg-secondary rounded-lg p-3 text-center">
-            <span className="text-amber-500 text-lg block mb-1">🪙</span>
+            <span className="text-amber-500 text-lg block mb-1">
+              <SavingsIcon fontSize="medium" />
+            </span>
             <span className="text-xs">Save R500 more</span>
           </div>
           <div className="flex-1 bg-secondary rounded-lg p-3 text-center">
-            <span className="text-primary text-lg block mb-1">👥</span>
+            <span className="text-primary text-lg block mb-1">
+              <PersonAddIcon fontSize="medium" />
+            </span>
             <span className="text-xs">Invite a friend</span>
           </div>
           <div className="flex-1 bg-secondary rounded-lg p-3 text-center">
-            <span className="text-green-500 text-lg block mb-1">❓</span>
+            <span className="text-green-500 text-lg block mb-1">
+              <QuizIcon fontSize="medium" />
+            </span>
             <span className="text-xs">Take a quiz</span>
           </div>
         </div>

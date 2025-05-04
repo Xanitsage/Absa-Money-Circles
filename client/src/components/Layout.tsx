@@ -35,15 +35,6 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="max-w-md mx-auto bg-background min-h-screen relative pb-16">
-      {/* Status Bar */}
-      <div className="bg-primary text-white py-2 px-4 flex justify-between items-center">
-        <div className="text-sm">{new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
-        <div className="flex space-x-2">
-          <i className="ri-wifi-line text-sm"></i>
-          <i className="ri-battery-charge-line text-sm"></i>
-        </div>
-      </div>
-
       {/* Header */}
       <header className="bg-background px-4 py-3 flex justify-between items-center shadow-sm z-10 sticky top-0 border-b border-border">
         <div className="flex items-center">

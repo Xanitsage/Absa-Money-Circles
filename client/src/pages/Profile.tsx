@@ -8,6 +8,13 @@ import { useQuery } from "@tanstack/react-query";
 import { User, UserWallet } from "@shared/schema";
 import { formatCurrency } from "@/lib/utils";
 
+// Material Design Icons for badges
+import SavingsIcon from '@mui/icons-material/Savings';
+import FlagIcon from '@mui/icons-material/Flag';
+import GroupsIcon from '@mui/icons-material/Groups';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CasinoIcon from '@mui/icons-material/Casino';
+
 export default function Profile() {
   const [darkMode, setDarkMode] = useState(false);
   const [notifications, setNotifications] = useState(true);
@@ -152,68 +159,31 @@ export default function Profile() {
         <div className="flex overflow-x-auto space-x-3 pb-2">
           <div className="flex flex-col items-center">
             <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                <path d="M12.5 2a8.2 8.2 0 0 1 6 13c-2.1 2.7-5 3-6 3H6.5a2.5 2.5 0 0 1 0-5H7a2.5 2.5 0 0 1 2.5-2.5c2 0 3 .5 3.5 1"></path>
-                <path d="M14 13.5c0-1.2-.8-1.7-2-1.7-1.2 0-2 .5-2 1.7 0 1.2.8 1.7 2 1.7 1.2 0 2-.5 2-1.7ZM23 19h1"></path>
-                <path d="M4 9c0-1 .5-2.4 2.5-2.4s2.5 1.4 2.5 2.4M14 6.5l-3.5 8M19.5 9c0-1-.5-2.4-2.5-2.4s-2.5 1.4-2.5 2.4"></path>
-                <path d="M8 12.5h8M19 16v7"></path>
-                <path d="M22 17H7c-1.7 0-2.5-1-2.5-2 0-.8.8-2 2.5-2h14"></path>
-              </svg>
+              <SavingsIcon style={{ width: '32px', height: '32px' }} className="text-primary" />
             </div>
             <span className="text-xs text-center">Early Saver</span>
           </div>
           <div className="flex flex-col items-center">
             <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                <path d="M17 8h3a2 2 0 0 1 2 2v3"></path>
-                <path d="M19 12c.6 1 1 2.1 1 3.4 0 3.8-3.1 6.9-7 6.9-1.2 0-2.4-.3-3.4-.9L8 20"></path>
-                <path d="M9 4v3"></path>
-                <path d="m14 5-4.5 4.5"></path>
-                <path d="M18 11.2c.8-.8 1.9-2.7 1.5-5.7-0.1-0.8-0.9-1.5-1.7-1.5-3 0-4.3 1.9-5.1 3"></path>
-                <path d="M9 11.7A5.7 5.7 0 0 0 7 16.5c0 3 2.5 5.5 5.5 5.5 1.8 0 3.4-.9 4.4-2.2"></path>
-                <path d="M13 7.5 9.1 11"></path>
-                <path d="M4 8H7"></path>
-                <path d="M5 19h3"></path>
-                <path d="M5 12h.1"></path>
-                <path d="M19.1 12h.09"></path>
-              </svg>
+              <FlagIcon style={{ width: '32px', height: '32px' }} className="text-primary" />
             </div>
             <span className="text-xs text-center">Goal Setter</span>
           </div>
           <div className="flex flex-col items-center">
             <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                <path d="M4 22h16"></path>
-                <path d="M10 14.6c-1.1 0-2-.9-2-2v-1.2A2 2 0 0 1 10 9.4h4a2 2 0 0 1 2 2v1.2c0 1.1-.9 2-2 2h-4Z"></path>
-                <path d="M9 18v4"></path>
-                <path d="M15 18v4"></path>
-                <path d="M5 9v5a2 2 0 0 0 2 2"></path>
-                <path d="M19 9v5a2 2 0 0 1-2 2"></path>
-              </svg>
+              <GroupsIcon style={{ width: '32px', height: '32px' }} className="text-primary" />
             </div>
             <span className="text-xs text-center">Team Player</span>
           </div>
           <div className="flex flex-col items-center">
             <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                <circle cx="12" cy="12" r="8"></circle>
-                <path d="M12 9v3l2 2"></path>
-                <path d="M3 3l5 5"></path>
-                <path d="M21 21l-5-5"></path>
-              </svg>
+              <AccessTimeIcon style={{ width: '32px', height: '32px' }} className="text-primary" />
             </div>
             <span className="text-xs text-center">Always on Time</span>
           </div>
           <div className="flex flex-col items-center">
             <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                <path d="M9 9h.01"></path>
-                <path d="M15 15h.01"></path>
-                <path d="m9.5 15 5-5"></path>
-              </svg>
+              <CasinoIcon style={{ width: '32px', height: '32px' }} className="text-primary" />
             </div>
             <span className="text-xs text-center">Lucky Saver</span>
           </div>

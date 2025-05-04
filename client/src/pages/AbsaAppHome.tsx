@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
+import absaLogo from "../assets/absa_logo.png";
 
 export default function AbsaAppHome() {
   const [_, setLocation] = useLocation();
@@ -190,7 +191,7 @@ export default function AbsaAppHome() {
                 onClick={() => setLocation("/")}
               >
                 <div className="w-6 h-6 mr-3">
-                  <img src="../assets/absa_logo.png" alt="Absa Logo" className="w-6 h-6" />
+                  <img src={absaLogo} alt="Absa Logo" className="w-6 h-6" />
                 </div>
                 <span className="text-[#303030] font-medium">Money Circles</span>
               </button>

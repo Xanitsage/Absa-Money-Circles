@@ -36,7 +36,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="max-w-md mx-auto bg-background min-h-screen relative pb-16">
       {/* Header */}
-      <header className="bg-background px-4 py-3 flex justify-between items-center shadow-sm z-10 sticky top-0 border-b border-border">
+      <header className="bg-background px-4 py-3 flex justify-between items-center shadow-sm z-10 sticky top-0 border-b border-border h-14">
         <div className="flex items-center">
           {location !== "/" && location !== "/circles" && location !== "/create" ? (
             <button 

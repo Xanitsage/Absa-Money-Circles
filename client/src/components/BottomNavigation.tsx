@@ -29,21 +29,21 @@ export default function BottomNavigation() {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-background border-t border-border px-4 py-2 flex justify-between items-center z-20 max-w-md mx-auto">
+    <nav className="fixed bottom-0 left-0 right-0 bg-background border-t border-border shadow-lg px-4 py-2 flex justify-between items-center z-20 max-w-md mx-auto"> {/* Added shadow-lg and adjusted padding */}
       <button 
         onClick={() => navigateTo("/")}
         className={`flex flex-col items-center space-y-1 px-3 py-1 ${activeTab === "/" ? "text-primary" : "text-muted-foreground"}`}
       >
-        <HomeIcon className="h-6 w-6" />
-        <span className="text-[10px] mt-1">Home</span>
+        <HomeIcon className="h-6 w-6 text-primary" /> {/* Added text-primary */}
+        <span className="text-[10px] mt-1 text-muted-foreground">Home</span> {/* Added text-muted-foreground */}
       </button>
 
       <button 
         onClick={() => navigateTo("/circles")}
         className={`flex flex-col items-center space-y-1 px-3 py-1 ${activeTab === "/circles" ? "text-primary" : "text-muted-foreground"}`}
       >
-        <PeopleIcon className="h-6 w-6" />
-        <span className="text-[10px] mt-1">Circles</span>
+        <PeopleIcon className="h-6 w-6 text-primary"/> {/* Added text-primary */}
+        <span className="text-[10px] mt-1 text-muted-foreground">Circles</span> {/* Added text-muted-foreground */}
       </button>
 
       <div className="relative -mt-5 z-10">
@@ -59,16 +59,16 @@ export default function BottomNavigation() {
         onClick={() => navigateTo("/pay")}
         className={`flex flex-col items-center space-y-1 px-3 py-1 ${activeTab === "/pay" ? "text-primary" : "text-muted-foreground"}`}
       >
-        <PaymentsIcon className="h-6 w-6" />
-        <span className="text-[10px] mt-1">Pay</span>
+        <PaymentsIcon className="h-6 w-6 text-primary"/> {/* Added text-primary */}
+        <span className="text-[10px] mt-1 text-muted-foreground">Pay</span> {/* Added text-muted-foreground */}
       </button>
 
       <button 
         onClick={() => navigateTo("/profile")}
         className={`flex flex-col items-center space-y-1 px-3 py-1 ${activeTab === "/profile" ? "text-primary" : "text-muted-foreground"}`}
       >
-        <PersonIcon className="h-6 w-6" />
-        <span className="text-[10px] mt-1">Profile</span>
+        <PersonIcon className="h-6 w-6 text-primary"/> {/* Added text-primary */}
+        <span className="text-[10px] mt-1 text-muted-foreground">Profile</span> {/* Added text-muted-foreground */}
       </button>
     </nav>
   );

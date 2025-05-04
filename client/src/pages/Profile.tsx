@@ -20,7 +20,7 @@ export default function Profile() {
   const [notifications, setNotifications] = useState(true);
   const [autoSave, setAutoSave] = useState(false);
   const [showCardDetails, setShowCardDetails] = useState(false);
-  
+
   // Fetch user data
   const { data: user } = useQuery<User>({
     queryKey: ['/api/user']
@@ -53,9 +53,9 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      
-      
-      
+
+
+
       {/* Card Details (Hidden by default) */}
       {showCardDetails && (
         <Card className="p-4 mb-6 bg-gray-100">
@@ -104,11 +104,11 @@ export default function Profile() {
           </div>
         </Card>
       )}
-      
+
       {/* Badges/Achievements */}
       <div className="mb-6">
         <h3 className="font-semibold mb-3">Your Badges</h3>
-        <div className="flex overflow-x-auto space-x-3 pb-2">
+        <div className="flex overflow-x-auto space-x-3 pb-2"> {/* Added overflow-x-auto */}
           <div className="flex flex-col items-center">
             <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-1">
               <SavingsIcon style={{ width: '32px', height: '32px' }} className="text-primary" />
@@ -141,11 +141,11 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      
+
       {/* Settings */}
       <Card className="p-4 mb-6">
         <h3 className="font-semibold mb-4">Settings</h3>
-        
+
         <div className="space-y-3">
           <div className="flex justify-between items-center py-2">
             <div className="flex items-center">
@@ -165,7 +165,7 @@ export default function Profile() {
             </div>
             <Switch checked={darkMode} onCheckedChange={setDarkMode} />
           </div>
-          
+
           <div className="flex justify-between items-center py-2">
             <div className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
@@ -176,7 +176,7 @@ export default function Profile() {
             </div>
             <Switch checked={notifications} onCheckedChange={setNotifications} />
           </div>
-          
+
           <div className="flex justify-between items-center py-2">
             <div className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
@@ -186,9 +186,9 @@ export default function Profile() {
             </div>
             <Switch checked={autoSave} onCheckedChange={setAutoSave} />
           </div>
-          
+
           <Separator />
-          
+
           <div className="flex justify-between items-center py-2">
             <div className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
@@ -208,7 +208,7 @@ export default function Profile() {
               <path d="m9 18 6-6-6-6"></path>
             </svg>
           </div>
-          
+
           <div className="flex justify-between items-center py-2">
             <div className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
@@ -221,7 +221,7 @@ export default function Profile() {
               <path d="m9 18 6-6-6-6"></path>
             </svg>
           </div>
-          
+
           <div className="flex justify-between items-center py-2">
             <div className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-gray-500">
@@ -237,7 +237,7 @@ export default function Profile() {
           </div>
         </div>
       </Card>
-      
+
       <div className="text-center">
         <Button variant="outline" className="text-red-500">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
@@ -246,7 +246,7 @@ export default function Profile() {
           </svg>
           Sign Out
         </Button>
-        
+
       </div>
     </div>
   );

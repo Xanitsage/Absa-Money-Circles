@@ -161,18 +161,18 @@ export default function AbsaAppHome() {
       {menuOpen && (
         <div className="absolute inset-0 bg-[#f5f5f5] flex flex-col z-50">
           {/* User section at top */}
-          <div className="bg-[#4A7AF7] p-4 text-black">
+          <div className="bg-[#DC0037] p-4 text-white">
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-[#DC0037] rounded-full flex items-center justify-center text-white font-bold mr-3">
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#DC0037] font-bold mr-3">
                 <span>SW</span>
               </div>
               <div className="flex-1">
-                <h2 className="font-bold text-sm uppercase">SBONISO WILL LINDOKUHLE MSIZA</h2>
-                <p className="text-xs">Personal Bank Account</p>
+                <h2 className="font-bold text-sm text-white uppercase">SBONISO WILL LINDOKUHLE MSIZA</h2>
+                <p className="text-xs text-white/80">Personal Bank Account</p>
               </div>
               <button 
                 onClick={toggleMenu}
-                className="h-8 w-8 flex items-center justify-center"
+                className="h-8 w-8 flex items-center justify-center text-white"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 6 6 18"/>

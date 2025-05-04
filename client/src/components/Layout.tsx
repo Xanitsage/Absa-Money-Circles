@@ -7,6 +7,7 @@ import AbbyAssistant from "./AbbyAssistant";
 import { ThemeToggle } from "./theme-toggle";
 import absaLogo from "../assets/absa_logo.png";
 import absaAbbyLogo from "../assets/absa_abby_logo.png";
+import { ScrollArea } from "./ui/scroll-area";
 
 interface LayoutProps {
   children: ReactNode;
@@ -89,10 +90,12 @@ export default function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow overflow-y-auto pb-16"> {/* Added overflow and padding */}
-        <div className="h-full">
-          {children}
-        </div>
+      <main className="flex-grow pb-16"> {/* Removed overflow since ScrollArea handles it */}
+        <ScrollArea className="h-[calc(100vh-8rem)]"> {/* Height calculation accounts for header and bottom nav */}
+          <div className="px-4">
+            {children}
+          </div>
+        </ScrollArea>
       </main>
 
       {/* Bottom Navigation */}

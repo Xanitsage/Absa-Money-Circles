@@ -76,6 +76,21 @@ export default function Layout({ children }: LayoutProps) {
               <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
             </svg>
           </button>
+          {!showAbby && (
+            <button 
+              onClick={() => setShowAbby(true)}
+              className="relative rounded-full p-1 hover:bg-secondary group"
+            >
+              <img 
+                src={absaAbbyLogo} 
+                alt="Absa Abby" 
+                className="h-8 w-8" 
+              />
+              <span className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 bg-black/75 text-white text-xs rounded-full p-1">
+                Open Abby
+              </span>
+            </button>
+          )}
           <button 
             onClick={() => setLocation('/profile')} 
             className="rounded-full p-2 text-foreground transition-colors hover:bg-secondary"
@@ -99,19 +114,7 @@ export default function Layout({ children }: LayoutProps) {
       {/* Bottom Navigation */}
       <BottomNavigation />
 
-      {/* Abby Assistant Button */}
-      <div className="fixed bottom-24 right-6 z-50">
-        <button 
-          className="flex items-center justify-center shadow-lg bg-white rounded-full p-1.5 hover:scale-105 active:scale-95 transition-transform duration-200"
-          onClick={() => setShowAbby(true)}
-        >
-          <img 
-            src={absaAbbyLogo} 
-            alt="Absa Abby" 
-            className="h-14 w-14" 
-          />
-        </button>
-      </div>
+      
 
       {/* Abby Assistant Modal */}
       {showAbby && <AbbyAssistant onClose={() => setShowAbby(false)} />}

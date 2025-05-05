@@ -1,35 +1,29 @@
 
-#!/bin/bash
+@echo off
+REM Windows setup script
 
-# Make script executable
-chmod +x setup.sh
+REM Install npm dependencies
+echo Installing npm dependencies...
+call npm install
 
-# Install npm dependencies
-echo "Installing npm dependencies..."
-npm install
+REM Build the project
+echo Building the project...
+call npm run build
 
-# Build the project
-echo "Building the project..."
-npm run build
+REM Create directories
+echo Creating directories...
+mkdir components hooks lib pages 2>nul
 
-# Copy configuration files
-echo "Copying configuration files..."
-cp -r client/src/components/* ./components/
-cp client/src/hooks/* ./hooks/
-cp client/src/lib/* ./lib/
-cp client/src/pages/* ./pages/
+REM Copy configuration files
+echo Copying configuration files...
+xcopy /E /I client\src\components\* components\
+xcopy /E /I client\src\hooks\* hooks\
+xcopy /E /I client\src\lib\* lib\
+xcopy /E /I client\src\pages\* pages\
 
-# Set up environment variables
-echo "Setting up environment variables..."
-touch .env
-echo "NODE_ENV=development" >> .env
-echo "PORT=5000" >> .env
+REM Set up environment variables
+echo Setting up environment variables...
+echo NODE_ENV=development> .env
+echo PORT=5000>> .env
 
-# Set correct permissions
-echo "Setting permissions..."
-chmod -R 755 ./components
-chmod -R 755 ./hooks
-chmod -R 755 ./lib
-chmod -R 755 ./pages
-
-echo "Setup complete! You can now run the development server with 'npm run dev'"
+echo Setup complete! You can now run the development server with 'npm run dev'

@@ -14,13 +14,28 @@
 
 #root {
   width: 100%;
-  max-width: 1440px;
+  max-width: min(1440px, 100% - 2rem);
   min-height: 100vh;
   margin: 0 auto;
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Responsive typography */
+html {
+  font-size: clamp(14px, 1vw + 12px, 16px);
+}
+
+/* Responsive spacing */
+.container {
+  width: 100%;
+  padding-right: clamp(1rem, 3vw, 2rem);
+  padding-left: clamp(1rem, 3vw, 2rem);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 body {

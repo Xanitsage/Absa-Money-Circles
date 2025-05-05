@@ -76,9 +76,6 @@ export default function Layout({ children }: LayoutProps) {
                 alt="Absa Abby" 
                 className="h-5 w-5" 
               />
-              <span className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 bg-black/75 text-white text-xs rounded-full p-1">
-                Open Abby
-              </span>
             </button>
           )}
           <button 

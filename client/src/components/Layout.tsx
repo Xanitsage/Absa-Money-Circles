@@ -100,15 +100,15 @@ export default function Layout({ children }: LayoutProps) {
       <BottomNavigation />
 
       {/* Abby Assistant Button */}
-      <div className="fixed bottom-20 right-4 z-10">
+      <div className="fixed bottom-24 right-6 z-50">
         <button 
-          className="flex items-center justify-center shadow-lg"
+          className="flex items-center justify-center shadow-lg bg-white rounded-full p-1.5 hover:scale-105 active:scale-95 transition-transform duration-200"
           onClick={() => setShowAbby(true)}
         >
           <img 
             src={absaAbbyLogo} 
             alt="Absa Abby" 
-            className="h-12 w-12" 
+            className="h-14 w-14" 
           />
         </button>
       </div>

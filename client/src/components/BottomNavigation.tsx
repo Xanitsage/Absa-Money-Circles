@@ -28,46 +28,46 @@ export default function BottomNavigation() {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-background border-t border-border shadow-lg px-2 sm:px-4 py-2 flex justify-between items-center z-20 max-w-md mx-auto">
+    <nav className="fixed bottom-0 left-0 right-0 bg-background border-t border-border shadow-lg px-3 sm:px-6 md:px-8 py-2 sm:py-3 flex justify-between items-center z-20 max-w-screen-xl mx-auto transition-all duration-200 ease-in-out">
       <button 
         onClick={() => navigateTo("/")}
-        className={`flex flex-col items-center min-w-[3rem] sm:min-w-[4rem] space-y-1 px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-accent/10 rounded-lg transition-colors ${activeTab === "/" ? "text-[#DC0037]" : "text-muted-foreground"}`}
+        className={`flex flex-col items-center min-w-[4rem] sm:min-w-[5rem] md:min-w-[6rem] space-y-1.5 px-2 sm:px-4 md:px-6 py-2 sm:py-2.5 hover:bg-accent/20 active:scale-95 rounded-xl transition-all duration-200 ${activeTab === "/" ? "text-[#DC0037]" : "text-muted-foreground hover:text-[#DC0037]"}`}
       >
-        <HomeIcon className="h-5 w-5 sm:h-6 sm:w-6" />
-        <span className="text-[10px] sm:text-xs">Home</span>
+        <HomeIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
+        <span className="text-[11px] sm:text-sm md:text-base font-medium">Home</span>
       </button>
 
       <button 
         onClick={() => navigateTo("/circles")}
-        className={`flex flex-col items-center min-w-[3rem] sm:min-w-[4rem] space-y-1 px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-accent/10 rounded-lg transition-colors ${activeTab === "/circles" ? "text-[#DC0037]" : "text-muted-foreground"}`}
+        className={`flex flex-col items-center min-w-[4rem] sm:min-w-[5rem] md:min-w-[6rem] space-y-1.5 px-2 sm:px-4 md:px-6 py-2 sm:py-2.5 hover:bg-accent/20 active:scale-95 rounded-xl transition-all duration-200 ${activeTab === "/circles" ? "text-[#DC0037]" : "text-muted-foreground hover:text-[#DC0037]"}`}
       >
-        <PeopleIcon className="h-5 w-5 sm:h-6 sm:w-6" />
-        <span className="text-[10px] sm:text-xs">Circles</span>
+        <PeopleIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
+        <span className="text-[11px] sm:text-sm md:text-base font-medium">Circles</span>
       </button>
 
-      <div className="relative -mt-5 z-10">
+      <div className="relative -mt-8 sm:-mt-10 md:-mt-12 z-10">
         <button 
           onClick={() => navigateTo("/create")}
-          className="bg-[#DC0037] text-white rounded-full p-2.5 sm:p-3 shadow-lg hover:bg-[#b30030] transition-colors"
+          className="bg-[#DC0037] text-white rounded-full p-3 sm:p-4 md:p-5 shadow-lg hover:bg-[#b30030] hover:shadow-xl active:scale-95 transition-all duration-200"
         >
-          <AddIcon className="h-5 w-5 sm:h-6 sm:w-6"/>
+          <AddIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"/>
         </button>
       </div>
 
       <button 
         onClick={() => navigateTo("/pay")}
-        className={`flex flex-col items-center min-w-[3rem] sm:min-w-[4rem] space-y-1 px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-accent/10 rounded-lg transition-colors ${activeTab === "/pay" ? "text-[#DC0037]" : "text-muted-foreground"}`}
+        className={`flex flex-col items-center min-w-[4rem] sm:min-w-[5rem] md:min-w-[6rem] space-y-1.5 px-2 sm:px-4 md:px-6 py-2 sm:py-2.5 hover:bg-accent/20 active:scale-95 rounded-xl transition-all duration-200 ${activeTab === "/pay" ? "text-[#DC0037]" : "text-muted-foreground hover:text-[#DC0037]"}`}
       >
-        <PaymentsIcon className="h-5 w-5 sm:h-6 sm:w-6" />
-        <span className="text-[10px] sm:text-xs">Pay</span>
+        <PaymentsIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
+        <span className="text-[11px] sm:text-sm md:text-base font-medium">Pay</span>
       </button>
 
       <button 
         onClick={() => navigateTo("/profile")}
-        className={`flex flex-col items-center min-w-[3rem] sm:min-w-[4rem] space-y-1 px-2 sm:px-3 py-1.5 sm:py-2 hover:bg-accent/10 rounded-lg transition-colors ${activeTab === "/profile" ? "text-[#DC0037]" : "text-muted-foreground"}`}
+        className={`flex flex-col items-center min-w-[4rem] sm:min-w-[5rem] md:min-w-[6rem] space-y-1.5 px-2 sm:px-4 md:px-6 py-2 sm:py-2.5 hover:bg-accent/20 active:scale-95 rounded-xl transition-all duration-200 ${activeTab === "/profile" ? "text-[#DC0037]" : "text-muted-foreground hover:text-[#DC0037]"}`}
       >
-        <PersonIcon className="h-5 w-5 sm:h-6 sm:w-6" />
-        <span className="text-[10px] sm:text-xs">Profile</span>
+        <PersonIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
+        <span className="text-[11px] sm:text-sm md:text-base font-medium">Profile</span>
       </button>
     </nav>
   );

@@ -28,7 +28,7 @@ export default function BottomNavigation() {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-background border-t border-border shadow-lg px-3 sm:px-6 md:px-8 py-2 sm:py-3 flex justify-between items-center z-20 max-w-screen-xl mx-auto transition-all duration-200 ease-in-out">
+    <nav className="fixed bottom-0 left-0 right-0 bg-background border-t border-border shadow-lg px-3 sm:px-6 md:px-8 py-2 sm:py-3 flex justify-between items-center z-20 max-w-screen-xl mx-auto transition-all duration-200 ease-in-out rounded-tl-md rounded-tr-md">
       <button 
         onClick={() => navigateTo("/")}
         className={`flex flex-col items-center min-w-[4rem] sm:min-w-[5rem] md:min-w-[6rem] space-y-1.5 px-2 sm:px-4 md:px-6 py-2 sm:py-2.5 hover:bg-accent/20 active:scale-95 rounded-xl transition-all duration-200 ${activeTab === "/" ? "text-[#DC0037]" : "text-muted-foreground hover:text-[#DC0037]"}`}

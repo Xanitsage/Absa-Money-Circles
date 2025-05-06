@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import { formatCurrency } from "@/lib/utils";
 import { UserWallet } from "@shared/schema";
-import absaAbbyLogo from "../assets/absa_abby_logo.png";
+import absaAbbyLogo from "../assets/absa_abby.svg";
 
 interface Message {
   id: string;

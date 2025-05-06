@@ -34,20 +34,20 @@ export default function Profile() {
   return (
     <div className="px-4 pt-6 pb-28">
       {/* Profile Header */}
-      <div className="flex items-center mb-6">
-        <Avatar className="h-20 w-20 border-4 border-primary">
-          <div className="bg-primary text-white text-xl font-semibold h-full w-full flex items-center justify-center">
+      <div className="flex items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-6 mb-4 sm:mb-6 hover:bg-accent/5 rounded-lg transition-all duration-200">
+        <Avatar className="h-16 w-16 sm:h-20 sm:w-20 border-4 border-primary shadow-md hover:scale-105 transition-transform duration-200 min-w-[4rem] sm:min-w-[5rem]">
+          <div className="bg-primary text-white text-lg sm:text-xl font-semibold h-full w-full flex items-center justify-center">
             LM
           </div>
         </Avatar>
-        <div className="ml-4">
-          <h1 className="text-2xl font-bold">Lindokuhle Msiza</h1>
-          <p className="text-gray-500">lindokuhle.msiza@gmail.com</p>
-          <div className="flex items-center mt-1">
-            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+        <div className="flex-1 min-w-0">
+          <h1 className="text-xl sm:text-2xl font-bold truncate mb-1 sm:mb-2">Lindokuhle Msiza</h1>
+          <p className="text-sm sm:text-base text-gray-500 truncate mb-2 sm:mb-3">lindokuhle.msiza@gmail.com</p>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="text-xs sm:text-sm bg-primary/10 text-primary px-3 py-1 rounded-full font-medium hover:bg-primary/20 transition-colors duration-200">
               Level {user?.level || 1}
             </span>
-            <span className="text-xs ml-2 text-gray-500">
+            <span className="text-xs sm:text-sm text-gray-500 px-2">
               {user?.xpPoints || 0} XP
             </span>
           </div>

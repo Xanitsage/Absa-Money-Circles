@@ -233,15 +233,7 @@ export default function AbsaAppHome() {
                 <span className="text-gray-800">International banking</span>
               </div>
 
-              <div className="flex items-center py-3">
-                <svg className="h-5 w-5 mr-4 text-gray-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
-                </svg>
-                <span className="text-gray-800">Documents</span>
-                <svg className="h-4 w-4 ml-auto text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="currentColor"/>
-                </svg>
-              </div>
+              
 
               <div className="flex items-center py-3">
                 <svg className="h-5 w-5 mr-4 text-gray-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

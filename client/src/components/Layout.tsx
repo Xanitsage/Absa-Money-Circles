@@ -72,7 +72,7 @@ export default function Layout({ children }: LayoutProps) {
               className="relative rounded-full p-1 hover:bg-secondary group"
             >
               <img 
-                src={absaAbbyLogo} 
+                src="/src/assets/absa_abby_icon.svg" 
                 alt="Absa Abby" 
                 className="h-5 w-5" 
               />

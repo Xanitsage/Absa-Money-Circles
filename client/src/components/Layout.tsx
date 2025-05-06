@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import AbbyAssistant from "./AbbyAssistant";
 import { ThemeToggle } from "./theme-toggle";
 import absaLogo from "../assets/absa_logo.png";
-import absaAbbyLogo from "../assets/absa_abby.svg";
+import absaAbbyLogo from "../assets/absa_abby_logo.png";
 import { ScrollArea } from "./ui/scroll-area";
 
 interface LayoutProps {
@@ -72,7 +72,7 @@ export default function Layout({ children }: LayoutProps) {
               className="relative rounded-full p-1 hover:bg-secondary group"
             >
               <img 
-                src="/src/assets/absa_abby_icon.svg" 
+                src={absaAbbyLogo} 
                 alt="Absa Abby" 
                 className="h-5 w-5" 
               />

@@ -176,7 +176,7 @@ export default function AbsaAppHome() {
                 <span>LM</span>
               </div>
               <div className="flex-1">
-                <h2 className="font-bold text-sm text-white uppercase">LINDOKUHLE MSIZA</h2>
+                <h2 className="font-bold text-sm text-white">Lindokuhle Msiza</h2>
                 <p className="text-xs text-white/80">Personal Bank Account</p>
               </div>
               <button 

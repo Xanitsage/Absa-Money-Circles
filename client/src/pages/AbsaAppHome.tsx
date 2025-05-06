@@ -76,10 +76,7 @@ export default function AbsaAppHome() {
 
       {/* Account Cards */}
       <div className="px-4 py-3 flex-1 space-y-3">
-        <div className="bg-[#DC0037] rounded-lg p-4 text-white relative">
-          <div className="absolute top-0 right-0 h-16 w-16">
-            
-          </div>
+        <div className="bg-[#DC0037] rounded-lg p-4 text-white">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-base font-medium">Cheque Account</p>
@@ -92,10 +89,7 @@ export default function AbsaAppHome() {
           </div>
         </div>
 
-        <div className="bg-[#DC0037] rounded-lg p-4 text-white relative">
-          <div className="absolute top-0 right-0 h-16 w-16">
-            
-          </div>
+        <div className="bg-[#DC0037] rounded-lg p-4 text-white">
           <div className="flex justify-between items-start">
             <div>
               <p className="text-base font-medium">Credit Account</p>

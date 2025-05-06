@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import AbbyAssistant from "./AbbyAssistant";
 import { ThemeToggle } from "./theme-toggle";
 import absaLogo from "../assets/absa_logo.png";
-import absaAbbyLogo from "../assets/absa_abby.svg";
+import absaAbbyLogo from "../assets/absa_abby_logo.png";
 import { ScrollArea } from "./ui/scroll-area";
 
 interface LayoutProps {

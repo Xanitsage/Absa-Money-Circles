@@ -1,0 +1,4 @@
+mkdir: cannot create directory ‘components’: File exists
+mkdir: cannot create directory ‘hooks’: File exists
+mkdir: cannot create directory ‘lib’: File exists
+mkdir: cannot create directory ‘pages’: File exists
